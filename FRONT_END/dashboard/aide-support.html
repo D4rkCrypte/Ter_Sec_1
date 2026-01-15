@@ -14,6 +14,214 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Mobile fixes for Aide & Support page */
+        @media (max-width: 768px) {
+            .dashboard-content {
+                padding: 1rem !important;
+                padding-bottom: calc(100px + env(safe-area-inset-bottom)) !important;
+                overflow-x: hidden !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            
+            .dashboard-section {
+                padding: 1.5rem !important;
+                margin-bottom: 1rem !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                overflow-x: hidden !important;
+            }
+            
+            .help-cards {
+                display: flex !important;
+                flex-direction: column !important;
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+                margin-bottom: 1.5rem !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            
+            .help-cards > div {
+                padding: 1.5rem !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                box-sizing: border-box !important;
+                overflow-x: hidden !important;
+                word-wrap: break-word !important;
+            }
+            
+            .section-header {
+                margin-bottom: 1.5rem !important;
+                width: 100% !important;
+            }
+            
+            .section-title {
+                font-size: 1.25rem !important;
+                word-wrap: break-word !important;
+            }
+            
+            .section-subtitle {
+                font-size: 0.875rem !important;
+                word-wrap: break-word !important;
+            }
+            
+            div[style*="max-width: 900px"] {
+                max-width: 100% !important;
+                padding: 0 !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                overflow-x: hidden !important;
+            }
+            
+            div[style*="text-align: center"] {
+                padding: 2rem 1.5rem !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                overflow-x: hidden !important;
+            }
+            
+            .dashboard-header {
+                flex-wrap: wrap !important;
+                padding: 1rem !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            
+            .header-left {
+                width: 100% !important;
+                margin-bottom: 1rem !important;
+                flex: 1 1 100% !important;
+            }
+            
+            .header-right {
+                width: 100% !important;
+                flex-wrap: wrap !important;
+                flex: 1 1 100% !important;
+            }
+            
+            .search-box {
+                width: 100% !important;
+                margin-bottom: 0.75rem !important;
+                flex: 1 1 100% !important;
+            }
+            
+            .sidebar-help {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                position: relative !important;
+                width: 100% !important;
+            }
+            
+            .help-link {
+                display: flex !important;
+                align-items: center !important;
+                gap: 0.75rem !important;
+                padding: 0.875rem 1.5rem !important;
+                color: rgba(255, 255, 255, 0.8) !important;
+                text-decoration: none !important;
+                transition: all 0.3s ease !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .help-cards > div {
+                padding: 1.25rem !important;
+            }
+            
+            .help-cards > div > div[style*="font-size: 2.5rem"] {
+                font-size: 2rem !important;
+            }
+            
+            h3[style*="font-size: 1.25rem"] {
+                font-size: 1.1rem !important;
+            }
+            
+            p[style*="font-size: 0.9rem"] {
+                font-size: 0.875rem !important;
+            }
+            
+            div[style*="text-align: center"] {
+                padding: 1.5rem 1rem !important;
+            }
+            
+            h3[style*="font-size: 1.5rem"] {
+                font-size: 1.25rem !important;
+            }
+            
+            .dashboard-content {
+                padding: 0.75rem !important;
+            }
+            
+            .dashboard-section {
+                padding: 1.25rem !important;
+            }
+        }
+        
+        /* iOS Safari specific fixes */
+        @supports (-webkit-touch-callout: none) {
+            @media (max-width: 768px) {
+                .dashboard-content {
+                    -webkit-overflow-scrolling: touch !important;
+                    overflow-x: hidden !important;
+                    -webkit-box-sizing: border-box !important;
+                }
+                
+                .help-cards {
+                    display: flex !important;
+                    flex-direction: column !important;
+                    -webkit-box-sizing: border-box !important;
+                }
+                
+                .help-cards > div {
+                    -webkit-box-sizing: border-box !important;
+                }
+                
+                .sidebar-help {
+                    -webkit-transform: translateZ(0) !important;
+                    will-change: transform !important;
+                }
+            }
+        }
+        
+        /* Android Chrome specific fixes */
+        @media screen and (-webkit-min-device-pixel-ratio: 0) {
+            @media (max-width: 768px) {
+                .dashboard-content {
+                    overflow-x: hidden !important;
+                    width: 100% !important;
+                    box-sizing: border-box !important;
+                }
+                
+                .help-cards {
+                    display: flex !important;
+                    flex-direction: column !important;
+                }
+                
+                .sidebar-help {
+                    transform: translateZ(0) !important;
+                    will-change: transform !important;
+                }
+            }
+        }
+        
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            @media (max-width: 768px) {
+                .help-link {
+                    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1) !important;
+                    tap-highlight-color: rgba(255, 255, 255, 0.1) !important;
+                }
+            }
+        }
+    </style>
 </head>
 <body class="dashboard-page">
     <!-- Sidebar -->
