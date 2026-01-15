@@ -10,15 +10,6 @@
         nav.className = 'mobile-bottom-nav';
         nav.id = 'mobile-bottom-nav';
         nav.innerHTML = `
-            <a href="dashboard.html" class="nav-item-mobile" data-page="dashboard">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="3" width="7" height="7"></rect>
-                    <rect x="14" y="3" width="7" height="7"></rect>
-                    <rect x="14" y="14" width="7" height="7"></rect>
-                    <rect x="3" y="14" width="7" height="7"></rect>
-                </svg>
-                <span>Accueil</span>
-            </a>
             <a href="mes-formations.html" class="nav-item-mobile" data-page="formations">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
@@ -82,19 +73,19 @@
 
     // Set active nav item based on current page
     function setActiveNavItem() {
-        const currentPage = window.location.pathname.split('/').pop() || 'dashboard.html';
+        const currentPage = window.location.pathname.split('/').pop() || 'mes-formations.html';
         const pageMap = {
-            'dashboard.html': 'dashboard',
             'mes-formations.html': 'formations',
             'examens-quiz.html': 'examens',
             'progression.html': 'progression',
-            'historique.html': 'dashboard',
+            'certificats.html': 'certificats',
+            'historique.html': 'formations',
             'profil.html': 'profil',
-            'notifications.html': 'dashboard',
-            'aide-support.html': 'dashboard'
+            'notifications.html': 'formations',
+            'aide-support.html': 'formations'
         };
         
-        const currentPageKey = pageMap[currentPage] || 'dashboard';
+        const currentPageKey = pageMap[currentPage] || 'formations';
         const navItems = document.querySelectorAll('.nav-item-mobile');
         
         navItems.forEach(item => {
