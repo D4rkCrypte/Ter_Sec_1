@@ -8,20 +8,37 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .module-content { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+        .module-header { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 3rem 2rem; border-radius: 16px; margin-bottom: 2rem; text-align: center; }
+        .module-header h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .content-section { background: white; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #e5e7eb; }
+        .accordion-header { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 1.5rem 2rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; border-bottom: 2px solid transparent; }
+        .accordion-header:hover { background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%); }
+        .accordion-header.active { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-bottom-color: #3b82f6; }
+        .accordion-header h2 { color: #1f2937; font-size: 1.5rem; font-weight: 700; margin: 0; flex: 1; display: flex; align-items: center; gap: 1rem; }
+        .accordion-icon { width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; }
+        .accordion-toggle { width: 32px; height: 32px; border-radius: 8px; background: rgba(59, 130, 246, 0.1); color: #3b82f6; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease; flex-shrink: 0; }
+        .accordion-header.active .accordion-toggle { transform: rotate(180deg); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding: 0 2rem; }
+        .accordion-content.active { max-height: 5000px; padding: 2rem; }
+        .highlight-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+        .warning-box { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+        .success-box { background: #d1fae5; border-left: 4px solid #10b981; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+        .module-navigation { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #e5e7eb; flex-wrap: wrap; gap: 1rem; }
+        .btn-nav { padding: 0.875rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem; border: none; cursor: pointer; font-size: 1rem; }
+        .btn-prev { background: #f3f4f6; color: #1f2937; }
+        .btn-next { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; }
+        .btn-complete { background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; margin-left: auto; }
+    </style>
 </head>
 <body>
     <header class="header">
         <nav class="navbar">
             <div class="container">
                 <div class="nav-wrapper">
-                    <div class="logo">
-                        <a href="../../index.html">TERANGA SECURITY</a>
-                    </div>
-                    <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
+                    <div class="logo"><a href="../../index.html">TERANGA SECURITY</a></div>
+                    <button class="mobile-menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
                     <ul class="nav-menu">
                         <li><a href="../../index.html" class="nav-link">Accueil</a></li>
                         <li><a href="../../a-propos.html" class="nav-link">À propos</a></li>
@@ -50,15 +67,363 @@
         </nav>
     </header>
 
-    <section class="course-page">
+    <section class="course-page" style="padding: 2rem 0;">
         <div class="container">
-            <div class="course-unavailable" style="text-align: center; padding: 4rem 2rem; max-width: 600px; margin: 4rem auto;">
-                <div class="unavailable-icon" style="font-size: 5rem; margin-bottom: 2rem;">🚧</div>
-                <h2 style="font-size: 2rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem;">Ce module est indisponible pour le moment</h2>
-                <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem; line-height: 1.6;">
-                    Le contenu de ce module sera disponible prochainement.
-                </p>
-                <a href="../cours-introduction-cybersecurite.html" style="display: inline-block; padding: 0.875rem 2rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s ease;">Retour à la formation</a>
+            <div class="module-content">
+                <div class="module-header">
+                    <h1>Module 2 : Les principales menaces cybernétiques</h1>
+                    <p style="font-size: 1.2rem; opacity: 0.9;">Apprenez à identifier et comprendre les menaces numériques</p>
+                </div>
+
+                <div class="content-section">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h2><span class="accordion-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                <path d="M2 17l10 5 10-5"></path>
+                                <path d="M2 12l10 5 10-5"></path>
+                            </svg>
+                        </span><span>1. Les malwares (logiciels malveillants)</span></h2>
+                        <div class="accordion-toggle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></div>
+                    </div>
+                    <div class="accordion-content active">
+                        <p style="font-size: 1.1rem; line-height: 1.9; color: #374151; margin-bottom: 1.5rem;">
+                            Les <strong>malwares</strong> (contraction de "malicious software") sont des logiciels conçus pour endommager, perturber ou accéder illégalement à un système informatique.
+                        </p>
+                        <p style="font-size: 1rem; line-height: 1.8; color: #4b5563; margin-bottom: 1.5rem;">
+                            <strong>En termes simples :</strong> C'est comme un virus biologique, mais pour votre ordinateur ou téléphone. Il se propage et cause des dommages sans votre permission.
+                        </p>
+                        <h3 style="color: #1f2937; font-size: 1.35rem; margin-top: 2rem; margin-bottom: 1rem; font-weight: 700;">Types de malwares</h3>
+                        <div style="display: grid; gap: 1.5rem; margin: 2rem 0;">
+                            <div style="background: #fef2f2; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #ef4444;">
+                                <h4 style="color: #991b1b; font-size: 1.2rem; margin-bottom: 0.75rem; font-weight: 700;">🦠 Virus</h4>
+                                <p style="color: #7f1d1d; line-height: 1.8; margin: 0;">
+                                    <strong>Définition :</strong> Programme qui s'attache à d'autres fichiers et se reproduit. Il se propage comme un virus biologique.
+                                </p>
+                                <p style="color: #991b1b; line-height: 1.8; margin-top: 0.75rem; margin-bottom: 0;">
+                                    <strong>Exemple au Sénégal :</strong> Un fichier infecté partagé par USB ou email peut infecter tous les ordinateurs d'une entreprise. <strong>Protection :</strong> Antivirus à jour, ne pas ouvrir de fichiers suspects.
+                                </p>
+                            </div>
+                            <div style="background: #fff7ed; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #f97316;">
+                                <h4 style="color: #9a3412; font-size: 1.2rem; margin-bottom: 0.75rem; font-weight: 700;">🔒 Ransomware</h4>
+                                <p style="color: #7c2d12; line-height: 1.8; margin: 0;">
+                                    <strong>Définition :</strong> Logiciel qui chiffre vos fichiers et demande une rançon pour les déverrouiller.
+                                </p>
+                                <p style="color: #9a3412; line-height: 1.8; margin-top: 0.75rem; margin-bottom: 0;">
+                                    <strong>Exemple au Sénégal :</strong> Des PME sénégalaises ont été victimes de ransomwares qui ont bloqué tous leurs fichiers. <strong>Protection :</strong> Sauvegardes régulières, ne jamais payer la rançon, utiliser un antivirus.
+                                </p>
+                            </div>
+                            <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #0ea5e9;">
+                                <h4 style="color: #0c4a6e; font-size: 1.2rem; margin-bottom: 0.75rem; font-weight: 700;">🕵️ Spyware</h4>
+                                <p style="color: #075985; line-height: 1.8; margin: 0;">
+                                    <strong>Définition :</strong> Logiciel qui espionne vos activités et collecte vos informations personnelles à votre insu.
+                                </p>
+                                <p style="color: #0c4a6e; line-height: 1.8; margin-top: 0.75rem; margin-bottom: 0;">
+                                    <strong>Exemple au Sénégal :</strong> Un spyware peut voler vos codes Orange Money ou Free Money. <strong>Protection :</strong> Ne pas télécharger d'applications suspectes, utiliser un antivirus.
+                                </p>
+                            </div>
+                            <div style="background: #f5f3ff; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #8b5cf6;">
+                                <h4 style="color: #5b21b6; font-size: 1.2rem; margin-bottom: 0.75rem; font-weight: 700;">🤖 Trojan (Cheval de Troie)</h4>
+                                <p style="color: #6b21a8; line-height: 1.8; margin: 0;">
+                                    <strong>Définition :</strong> Logiciel qui semble légitime mais contient du code malveillant caché.
+                                </p>
+                                <p style="color: #5b21b6; line-height: 1.8; margin-top: 0.75rem; margin-bottom: 0;">
+                                    <strong>Exemple au Sénégal :</strong> Une application qui promet des crédits gratuits Orange mais installe un malware. <strong>Protection :</strong> Télécharger uniquement depuis des sources officielles (Google Play, App Store).
+                                </p>
+                            </div>
+                        </div>
+                        <div class="warning-box">
+                            <strong style="display: block; margin-bottom: 0.5rem; color: #92400e;">⚠️ Comment se protéger :</strong>
+                            <ul style="color: #78350f; margin: 0; padding-left: 1.5rem;">
+                                <li>Utiliser un antivirus à jour</li>
+                                <li>Ne pas télécharger de fichiers suspects</li>
+                                <li>Faire des sauvegardes régulières</li>
+                                <li>Mettre à jour votre système</li>
+                                <li>Être prudent avec les emails et liens</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h2><span class="accordion-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </span><span>2. Le phishing (hameçonnage)</span></h2>
+                        <div class="accordion-toggle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></div>
+                    </div>
+                    <div class="accordion-content">
+                        <p style="font-size: 1.1rem; line-height: 1.9; color: #374151; margin-bottom: 1.5rem;">
+                            Le <strong>phishing</strong> (hameçonnage) est une technique utilisée par les cybercriminels pour voler vos informations personnelles en se faisant passer pour une organisation de confiance.
+                        </p>
+                        <p style="font-size: 1rem; line-height: 1.8; color: #4b5563; margin-bottom: 1.5rem;">
+                            <strong>En termes simples :</strong> C'est comme un pêcheur qui met un appât sur un hameçon. Le pirate "pêche" vos informations en vous faisant croire qu'il est votre banque, Orange Money, ou un service que vous utilisez.
+                        </p>
+                        <h3 style="color: #1f2937; font-size: 1.35rem; margin-top: 2rem; margin-bottom: 1rem; font-weight: 700;">Comment fonctionne le phishing ?</h3>
+                        <div style="background: #f9fafb; padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0;">
+                            <ol style="color: #4b5563; line-height: 1.8; padding-left: 1.5rem; margin: 0;">
+                                <li style="margin-bottom: 1rem;"><strong>Le pirate envoie un email</strong> qui semble provenir d'une source fiable (Orange, votre banque, etc.)</li>
+                                <li style="margin-bottom: 1rem;"><strong>L'email vous demande d'agir rapidement</strong> (votre compte sera fermé, vous avez gagné un prix, etc.)</li>
+                                <li style="margin-bottom: 1rem;"><strong>Vous cliquez sur un lien</strong> qui vous amène sur un faux site web</li>
+                                <li style="margin-bottom: 1rem;"><strong>Vous entrez vos identifiants</strong> (mot de passe, code PIN, etc.)</li>
+                                <li><strong>Le pirate vole vos informations</strong> et peut accéder à vos comptes</li>
+                            </ol>
+                        </div>
+                        <h3 style="color: #1f2937; font-size: 1.35rem; margin-top: 2rem; margin-bottom: 1rem; font-weight: 700;">Exemples courants au Sénégal</h3>
+                        <div style="display: grid; gap: 1.25rem; margin: 2rem 0;">
+                            <div style="background: #fef2f2; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #ef4444;">
+                                <h4 style="color: #991b1b; font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 700;">📱 Phishing Orange Money / Free Money</h4>
+                                <p style="color: #7f1d1d; line-height: 1.8; margin: 0;">
+                                    <strong>Exemple :</strong> "Votre compte Orange Money sera suspendu. Cliquez ici pour vérifier votre identité." Le lien vous amène sur un faux site qui vole votre code PIN.
+                                </p>
+                                <p style="color: #991b1b; line-height: 1.8; margin-top: 0.75rem; margin-bottom: 0; font-weight: 600;">
+                                    ✅ <strong>Protection :</strong> Orange Money ne vous demandera JAMAIS votre code PIN par email ou SMS. Ne le partagez jamais !
+                                </p>
+                            </div>
+                            <div style="background: #fff7ed; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #f97316;">
+                                <h4 style="color: #9a3412; font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 700;">🏦 Phishing bancaire</h4>
+                                <p style="color: #7c2d12; line-height: 1.8; margin: 0;">
+                                    <strong>Exemple :</strong> "Votre carte bancaire a été bloquée. Cliquez ici pour la débloquer." Le site vole vos informations bancaires.
+                                </p>
+                                <p style="color: #9a3412; line-height: 1.8; margin-top: 0.75rem; margin-bottom: 0; font-weight: 600;">
+                                    ✅ <strong>Protection :</strong> Contactez toujours votre banque directement par téléphone ou en agence. Ne cliquez jamais sur les liens dans les emails.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="success-box">
+                            <strong style="display: block; margin-bottom: 0.5rem; color: #065f46;">✅ Comment reconnaître un email de phishing :</strong>
+                            <ul style="color: #047857; margin: 0; padding-left: 1.5rem;">
+                                <li>Fautes d'orthographe et de grammaire</li>
+                                <li>Demande urgente d'action</li>
+                                <li>Expéditeur suspect (email bizarre)</li>
+                                <li>Lien qui ne correspond pas au site officiel</li>
+                                <li>Demande d'informations sensibles (code PIN, mot de passe)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h2><span class="accordion-icon">💣</span><span>3. Les attaques par déni de service (DDoS)</span></h2>
+                        <div class="accordion-toggle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></div>
+                    </div>
+                    <div class="accordion-content">
+                        <p style="font-size: 1.1rem; line-height: 1.9; color: #374151; margin-bottom: 1.5rem;">
+                            Une <strong>attaque par déni de service (DDoS)</strong> consiste à submerger un serveur ou un site web avec un énorme nombre de requêtes pour le rendre inaccessible.
+                        </p>
+                        <p style="font-size: 1rem; line-height: 1.8; color: #4b5563; margin-bottom: 1.5rem;">
+                            <strong>En termes simples :</strong> C'est comme si des milliers de personnes bloquaient l'entrée d'un magasin en même temps. Personne ne peut entrer, et le magasin ne peut plus fonctionner.
+                        </p>
+                        <h3 style="color: #1f2937; font-size: 1.35rem; margin-top: 2rem; margin-bottom: 1rem; font-weight: 700;">Impact au Sénégal</h3>
+                        <p style="color: #4b5563; line-height: 1.8; margin-bottom: 1.5rem;">
+                            Les sites web d'entreprises sénégalaises, de services publics, ou de banques peuvent être visés. Quand un site est attaqué, les clients ne peuvent plus y accéder, ce qui cause des pertes financières.
+                        </p>
+                        <div class="highlight-box">
+                            <strong style="display: block; margin-bottom: 0.5rem; color: #1e40af;">💡 Protection :</strong>
+                            <p style="color: #1e3a8a; margin: 0; line-height: 1.8;">
+                                En tant qu'utilisateur, vous ne pouvez pas empêcher une attaque DDoS. Mais les entreprises doivent utiliser des services de protection DDoS et avoir des serveurs robustes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h2><span class="accordion-icon">👤</span><span>4. L'ingénierie sociale</span></h2>
+                        <div class="accordion-toggle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></div>
+                    </div>
+                    <div class="accordion-content">
+                        <p style="font-size: 1.1rem; line-height: 1.9; color: #374151; margin-bottom: 1.5rem;">
+                            L'<strong>ingénierie sociale</strong> est une technique qui consiste à manipuler psychologiquement les personnes pour obtenir des informations confidentielles ou leur faire effectuer des actions.
+                        </p>
+                        <p style="font-size: 1rem; line-height: 1.8; color: #4b5563; margin-bottom: 1.5rem;">
+                            <strong>En termes simples :</strong> Au lieu d'attaquer directement un ordinateur, le pirate attaque la personne. Il utilise la confiance, la peur, ou la curiosité pour vous faire faire quelque chose que vous ne devriez pas faire.
+                        </p>
+                        <h3 style="color: #1f2937; font-size: 1.35rem; margin-top: 2rem; margin-bottom: 1rem; font-weight: 700;">Exemples d'ingénierie sociale</h3>
+                        <div style="display: grid; gap: 1.25rem; margin: 2rem 0;">
+                            <div style="background: #fef2f2; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #ef4444;">
+                                <h4 style="color: #991b1b; font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 700;">📞 Appel téléphonique frauduleux</h4>
+                                <p style="color: #7f1d1d; line-height: 1.8; margin: 0;">
+                                    <strong>Scénario :</strong> "Bonjour, je suis de la banque. Votre compte a un problème. Donnez-moi votre numéro de carte pour vérifier." C'est un escroc qui vous appelle.
+                                </p>
+                                <p style="color: #991b1b; line-height: 1.8; margin-top: 0.75rem; margin-bottom: 0; font-weight: 600;">
+                                    ✅ <strong>Protection :</strong> Ne donnez JAMAIS d'informations sensibles par téléphone. Rappelez directement votre banque pour vérifier.
+                                </p>
+                            </div>
+                            <div style="background: #fff7ed; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #f97316;">
+                                <h4 style="color: #9a3412; font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 700;">🎁 Offres trop belles pour être vraies</h4>
+                                <p style="color: #7c2d12; line-height: 1.8; margin: 0;">
+                                    <strong>Scénario :</strong> "Félicitations ! Vous avez gagné 1 million FCFA ! Cliquez ici pour réclamer votre prix." C'est un piège pour voler vos informations.
+                                </p>
+                                <p style="color: #9a3412; line-height: 1.8; margin-top: 0.75rem; margin-bottom: 0; font-weight: 600;">
+                                    ✅ <strong>Protection :</strong> Si c'est trop beau pour être vrai, c'est probablement faux. Ignorez ces messages.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h2><span class="accordion-icon">🔑</span><span>5. Les attaques par force brute</span></h2>
+                        <div class="accordion-toggle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></div>
+                    </div>
+                    <div class="accordion-content">
+                        <p style="font-size: 1.1rem; line-height: 1.9; color: #374151; margin-bottom: 1.5rem;">
+                            Une <strong>attaque par force brute</strong> consiste à essayer toutes les combinaisons possibles de mots de passe jusqu'à trouver le bon.
+                        </p>
+                        <p style="font-size: 1rem; line-height: 1.8; color: #4b5563; margin-bottom: 1.5rem;">
+                            <strong>En termes simples :</strong> C'est comme un voleur qui essaie toutes les clés possibles jusqu'à trouver celle qui ouvre votre porte. Avec un ordinateur, cela peut être très rapide.
+                        </p>
+                        <div class="warning-box">
+                            <strong style="display: block; margin-bottom: 0.5rem; color: #92400e;">⚠️ Protection contre la force brute :</strong>
+                            <ul style="color: #78350f; margin: 0; padding-left: 1.5rem;">
+                                <li>Utiliser des mots de passe longs et complexes (au moins 12 caractères)</li>
+                                <li>Activer l'authentification à deux facteurs (2FA)</li>
+                                <li>Limiter le nombre de tentatives de connexion</li>
+                                <li>Ne pas utiliser de mots de passe évidents (123456, password, etc.)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h2><span class="accordion-icon">📊</span><span>6. Statistiques et tendances au Sénégal</span></h2>
+                        <div class="accordion-toggle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></div>
+                    </div>
+                    <div class="accordion-content">
+                        <p style="font-size: 1.1rem; line-height: 1.9; color: #374151; margin-bottom: 1.5rem;">
+                            Les cyberattaques augmentent rapidement au Sénégal et en Afrique de l'Ouest. Voici ce que vous devez savoir :
+                        </p>
+                        <div style="display: grid; gap: 1.25rem; margin: 2rem 0;">
+                            <div style="background: #fef2f2; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #ef4444;">
+                                <h4 style="color: #991b1b; font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 700;">📈 Augmentation des attaques</h4>
+                                <p style="color: #7f1d1d; line-height: 1.8; margin: 0;">
+                                    Les cyberattaques en Afrique de l'Ouest ont augmenté de <strong>plus de 200%</strong> ces dernières années. Le Sénégal est particulièrement ciblé à cause de sa croissance numérique rapide.
+                                </p>
+                            </div>
+                            <div style="background: #fff7ed; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #f97316;">
+                                <h4 style="color: #9a3412; font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 700;">🎯 Cibles principales</h4>
+                                <p style="color: #7c2d12; line-height: 1.8; margin: 0;">
+                                    Les PME, les services financiers (Orange Money, Free Money), les institutions publiques, et les particuliers sont les principales cibles. Les pirates savent que ces secteurs sont souvent moins protégés.
+                                </p>
+                            </div>
+                            <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #0ea5e9;">
+                                <h4 style="color: #0c4a6e; font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 700;">💰 Coûts des attaques</h4>
+                                <p style="color: #075985; line-height: 1.8; margin: 0;">
+                                    Une cyberattaque peut coûter des millions de FCFA à une entreprise : perte de données, interruption d'activité, réputation endommagée, et amendes réglementaires.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h2><span class="accordion-icon">🛡️</span><span>7. Comment se protéger : résumé pratique</span></h2>
+                        <div class="accordion-toggle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></div>
+                    </div>
+                    <div class="accordion-content">
+                        <p style="font-size: 1.1rem; line-height: 1.9; color: #374151; margin-bottom: 1.5rem;">
+                            Voici un résumé pratique des mesures de protection essentielles que vous pouvez appliquer dès maintenant :
+                        </p>
+                        <div style="display: grid; gap: 1rem; margin: 2rem 0;">
+                            <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #10b981;">
+                                <h4 style="color: #065f46; font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 700;">✅ Checklist de protection quotidienne</h4>
+                                <ul style="color: #047857; margin: 0; padding-left: 1.5rem; line-height: 1.8;">
+                                    <li>Vérifier les emails avant de cliquer sur des liens</li>
+                                    <li>Ne jamais partager vos codes PIN ou mots de passe</li>
+                                    <li>Utiliser des mots de passe forts et uniques</li>
+                                    <li>Activer la 2FA sur tous vos comptes importants</li>
+                                    <li>Mettre à jour régulièrement vos appareils</li>
+                                    <li>Faire des sauvegardes régulières</li>
+                                    <li>Utiliser un antivirus à jour</li>
+                                    <li>Être méfiant des offres trop belles pour être vraies</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="success-box">
+                            <strong style="display: block; margin-bottom: 0.5rem; color: #065f46;">💡 Rappel important :</strong>
+                            <p style="color: #047857; margin: 0; line-height: 1.8;">
+                                La meilleure protection, c'est vous ! En étant vigilant et en appliquant ces bonnes pratiques, vous éviterez la grande majorité des attaques. La formation continue est votre meilleur allié.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h2><span class="accordion-icon">🎓</span><span>8. Conclusion du module</span></h2>
+                        <div class="accordion-toggle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></div>
+                    </div>
+                    <div class="accordion-content">
+                        <p style="font-size: 1.1rem; line-height: 1.9; color: #374151; margin-bottom: 1.5rem;">
+                            Excellent travail ! 🎉 Vous comprenez maintenant les principales menaces cybernétiques et comment elles fonctionnent.
+                        </p>
+                        <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 2rem; border-radius: 16px; margin: 2rem 0; border: 2px solid #3b82f6;">
+                            <h3 style="color: #1e40af; font-size: 1.5rem; margin-bottom: 1.5rem; font-weight: 700;">📚 Points clés à retenir</h3>
+                            <div style="display: grid; gap: 1rem;">
+                                <div style="background: white; padding: 1.25rem; border-radius: 10px; display: flex; align-items: start; gap: 1rem;">
+                                    <div style="font-size: 1.5rem; flex-shrink: 0;">🦠</div>
+                                    <div>
+                                        <strong style="color: #1f2937; display: block; margin-bottom: 0.5rem;">Les malwares sont des logiciels malveillants</strong>
+                                        <p style="color: #4b5563; margin: 0; line-height: 1.7;">Virus, ransomware, spyware - tous peuvent endommager vos appareils et voler vos données.</p>
+                                    </div>
+                                </div>
+                                <div style="background: white; padding: 1.25rem; border-radius: 10px; display: flex; align-items: start; gap: 1rem;">
+                                    <div style="font-size: 1.5rem; flex-shrink: 0;">🎣</div>
+                                    <div>
+                                        <strong style="color: #1f2937; display: block; margin-bottom: 0.5rem;">Le phishing est très courant au Sénégal</strong>
+                                        <p style="color: #4b5563; margin: 0; line-height: 1.7;">Soyez particulièrement vigilant avec les emails concernant Orange Money, Free Money, et vos comptes bancaires.</p>
+                                    </div>
+                                </div>
+                                <div style="background: white; padding: 1.25rem; border-radius: 10px; display: flex; align-items: start; gap: 1rem;">
+                                    <div style="font-size: 1.5rem; flex-shrink: 0;">👤</div>
+                                    <div>
+                                        <strong style="color: #1f2937; display: block; margin-bottom: 0.5rem;">L'ingénierie sociale exploite la confiance</strong>
+                                        <p style="color: #4b5563; margin: 0; line-height: 1.7;">Les pirates manipulent les personnes plutôt que les systèmes. Restez méfiants.</p>
+                                    </div>
+                                </div>
+                                <div style="background: white; padding: 1.25rem; border-radius: 10px; display: flex; align-items: start; gap: 1rem;">
+                                    <div style="font-size: 1.5rem; flex-shrink: 0;">🛡️</div>
+                                    <div>
+                                        <strong style="color: #1f2937; display: block; margin-bottom: 0.5rem;">La protection commence par vous</strong>
+                                        <p style="color: #4b5563; margin: 0; line-height: 1.7;">En appliquant les bonnes pratiques, vous évitez la majorité des attaques.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); padding: 2rem; border-radius: 16px; margin: 2rem 0; border: 2px solid #10b981; text-align: center;">
+                            <h3 style="color: #065f46; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 700;">🚀 Prochaine étape</h3>
+                            <p style="color: #047857; font-size: 1.1rem; line-height: 1.8; margin: 0;">
+                                Dans le <strong>Module 3</strong>, nous explorerons les vulnérabilités et failles de sécurité. Vous apprendrez comment les pirates trouvent et exploitent les faiblesses des systèmes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="module-navigation">
+                    <a href="module-1-introduction.html" class="btn-nav btn-prev">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Module précédent
+                    </a>
+                    <button onclick="completeModule()" class="btn-nav btn-complete" id="complete-btn">
+                        ✓ Marquer comme complété
+                    </button>
+                    <a href="module-3-vulnerabilites.html" class="btn-nav btn-next">
+                        Module suivant
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -68,12 +433,7 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <h3 class="footer-title">TERANGA SECURITY</h3>
-                    <p class="footer-description">
-                        Plateforme sénégalaise de formation et sensibilisation en cybersécurité.
-                    </p>
-                    <p class="footer-tagline">
-                        Former, Protéger, Renforcer la sécurité numérique au Sénégal.
-                    </p>
+                    <p class="footer-description">Plateforme sénégalaise de formation et sensibilisation en cybersécurité.</p>
                 </div>
                 <div class="footer-col">
                     <h4 class="footer-subtitle">Liens Rapides</h4>
@@ -85,23 +445,6 @@
                         <li><a href="../../contact.html">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4 class="footer-subtitle">Contact</h4>
-                    <ul class="footer-contact">
-                        <li>📧 <a href="mailto:contact@terangasecurity.com">contact@terangasecurity.com</a></li>
-                        <li>📱 <a href="tel:+221777777777">+221 77 777 77 77</a></li>
-                        <li>📍 Dakar, Sénégal</li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4 class="footer-subtitle">Suivez-nous</h4>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Facebook">Facebook</a>
-                        <a href="#" class="social-link" aria-label="Twitter">Twitter</a>
-                        <a href="#" class="social-link" aria-label="LinkedIn">LinkedIn</a>
-                        <a href="#" class="social-link" aria-label="Instagram">Instagram</a>
-                    </div>
-                </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2024 TERANGA SECURITY. Tous droits réservés.</p>
@@ -110,5 +453,48 @@
     </footer>
 
     <script src="../../script.js"></script>
+    <script src="../../dashboard-functions.js"></script>
+    <script>
+        if (typeof autoTrackProgress === 'function') autoTrackProgress();
+        window.completeModule = function() {
+            const courseUrl = '/formation/cours-introduction-cybersecurite.html';
+            const moduleNumber = 2;
+            if (typeof completeModule === 'function' && window.completeModule !== completeModule) {
+                if (completeModule(courseUrl, moduleNumber)) {
+                    alert('✅ Module complété avec succès !');
+                    const btn = document.getElementById('complete-btn');
+                    if (btn) { btn.style.background = '#10b981'; btn.innerHTML = '✓ Complété'; btn.disabled = true; }
+                }
+            } else {
+                if (typeof window.completeModule === 'function' && window.completeModule !== completeModule) {
+                    window.completeModule(courseUrl, moduleNumber);
+                }
+                alert('✅ Module complété avec succès !');
+            }
+        };
+        function toggleAccordion(header) {
+            const section = header.parentElement;
+            const content = section.querySelector('.accordion-content');
+            const isActive = header.classList.contains('active');
+            document.querySelectorAll('.accordion-header').forEach(h => {
+                if (h !== header) { h.classList.remove('active'); h.nextElementSibling.classList.remove('active'); }
+            });
+            if (isActive) {
+                header.classList.remove('active');
+                content.classList.remove('active');
+            } else {
+                header.classList.add('active');
+                content.classList.add('active');
+                setTimeout(() => { header.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 100);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstAccordion = document.querySelector('.accordion-header');
+            if (firstAccordion) {
+                firstAccordion.classList.add('active');
+                firstAccordion.nextElementSibling.classList.add('active');
+            }
+        });
+    </script>
 </body>
 </html>

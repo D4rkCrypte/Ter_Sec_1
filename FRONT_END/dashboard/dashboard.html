@@ -20,7 +20,11 @@
     <aside class="dashboard-sidebar">
         <div class="sidebar-header">
             <div class="sidebar-logo">
-                <div class="logo-icon">🛡️</div>
+                <div class="logo-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                </div>
                 <span class="logo-text">TERANGA SECURITY</span>
             </div>
             <a href="../index.html" class="btn-home" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.5rem 1rem; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; color: white; text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: all 0.3s ease;">
@@ -72,6 +76,16 @@
                             <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
                         </svg>
                         <span>Progression</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="certificats.html" class="nav-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 15v7"></path>
+                            <path d="M5 12H2a10 10 0 0 0 20 0h-3"></path>
+                            <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                        </svg>
+                        <span>Certificats</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -166,7 +180,12 @@
                     <!-- User Info Modal -->
                     <div id="user-info-modal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.2); z-index: 10000; max-width: 400px; width: 90%;">
                         <div style="text-align: center; margin-bottom: 1.5rem;">
-                            <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2rem; color: white;">👤</div>
+                            <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white;">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
                             <h3 style="font-size: 1.5rem; font-weight: 700; color: #1f2937; margin: 0;">Utilisateur</h3>
                             <p style="color: #6b7280; margin-top: 0.5rem;">Membre depuis Janvier 2024</p>
                         </div>
@@ -247,51 +266,6 @@
                 </div>
             </section>
 
-            <!-- Stats Section -->
-            <section class="stats-section">
-                <div class="stat-card">
-                    <div class="stat-icon active-courses">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                        </svg>
-                    </div>
-                    <div class="stat-info">
-                        <h3 class="stat-number">8</h3>
-                        <p class="stat-label">Formations Actives</p>
-                        <a href="#" class="stat-link">Toutes les formations <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></a>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon finished-courses">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
-                    </div>
-                    <div class="stat-info">
-                        <h3 class="stat-number">4</h3>
-                        <p class="stat-label">Formations Terminées</p>
-                        <a href="#" class="stat-link">Terminées <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></a>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon certificates">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 15v7"></path>
-                            <path d="M5 12H2a10 10 0 0 0 20 0h-3"></path>
-                            <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
-                        </svg>
-                    </div>
-                    <div class="stat-info">
-                        <h3 class="stat-number">2</h3>
-                        <p class="stat-label">Certificats Obtenus</p>
-                        <a href="#" class="stat-link">Certificats <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></a>
-                    </div>
-                </div>
-            </section>
         </div>
     </main>
 
@@ -372,6 +346,7 @@
                 userOverlay.style.display = 'block';
             });
         }
+        
         
         // Load started courses dynamically
         const startedCourses = JSON.parse(localStorage.getItem('startedCourses') || '[]');

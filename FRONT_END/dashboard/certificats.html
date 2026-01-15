@@ -7,8 +7,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="format-detection" content="telephone=no">
-    <title>Examens & Quiz - TERANGA SECURITY</title>
-    <meta name="description" content="Examens et quiz - TERANGA SECURITY">
+    <title>Mes Certificats - TERANGA SECURITY</title>
+    <meta name="description" content="Mes certificats obtenus - TERANGA SECURITY">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="dashboard.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +20,11 @@
     <aside class="dashboard-sidebar">
         <div class="sidebar-header">
             <div class="sidebar-logo">
-                <div class="logo-icon">🛡️</div>
+                <div class="logo-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                </div>
                 <span class="logo-text">TERANGA SECURITY</span>
             </div>
             <a href="../index.html" class="btn-home" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.5rem 1rem; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; color: white; text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: all 0.3s ease;">
@@ -54,7 +58,7 @@
                         <span>Mes Formations</span>
                     </a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a href="examens-quiz.html" class="nav-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -74,7 +78,7 @@
                         <span>Progression</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a href="certificats.html" class="nav-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M12 15v7"></path>
@@ -134,11 +138,10 @@
 
     <!-- Main Content -->
     <main class="dashboard-main">
-        <!-- Header -->
         <header class="dashboard-header">
             <div class="header-left">
-                <h1 class="welcome-title">Examens & Quiz</h1>
-                <p class="welcome-subtitle">Testez vos connaissances en cybersécurité</p>
+                <h1 class="welcome-title">Mes Certificats</h1>
+                <p class="welcome-subtitle">Consultez et téléchargez vos certificats obtenus</p>
             </div>
             <div class="header-right">
                 <div class="search-box">
@@ -146,7 +149,7 @@
                         <circle cx="11" cy="11" r="8"></circle>
                         <path d="m21 21-4.35-4.35"></path>
                     </svg>
-                    <input type="text" placeholder="Rechercher un examen...">
+                    <input type="text" placeholder="Rechercher un certificat...">
                 </div>
                 <div class="header-actions">
                     <a href="notifications.html" class="icon-btn notification-btn">
@@ -166,37 +169,30 @@
             </div>
         </header>
 
-        <!-- Dashboard Content -->
         <div class="dashboard-content">
             <section class="dashboard-section">
                 <div class="section-header">
                     <div>
-                        <h2 class="section-title">Mes Examens & Quiz</h2>
-                        <p class="section-subtitle">Passez vos examens et quiz pour valider vos compétences</p>
+                        <h2 class="section-title">Certificats obtenus</h2>
+                        <p class="section-subtitle">Vos certifications de cybersécurité</p>
                     </div>
                 </div>
 
-                <div class="quiz-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;">
-                    <div class="quiz-card" style="background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); transition: all 0.3s ease;">
-                        <div style="font-size: 3rem; margin-bottom: 1rem; text-align: center;">📝</div>
-                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">Quiz: Introduction à la Cybersécurité</h3>
-                        <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1.5rem;">Testez vos connaissances sur les bases de la cybersécurité</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                            <span style="font-size: 0.85rem; color: #6b7280;">20 questions</span>
-                            <span style="font-size: 0.85rem; color: #3b82f6; font-weight: 600;">Non commencé</span>
-                        </div>
-                        <button class="btn-continue" style="width: 100%;">Commencer</button>
+                <div id="certificates-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
+                    <!-- Les certificats seront chargés dynamiquement ici -->
+                </div>
+
+                <div id="no-certificates" style="display: none; text-align: center; padding: 4rem 2rem; background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
+                    <div style="width: 80px; height: 80px; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2">
+                            <path d="M12 15v7"></path>
+                            <path d="M5 12H2a10 10 0 0 0 20 0h-3"></path>
+                            <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                        </svg>
                     </div>
-                    <div class="quiz-card" style="background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); transition: all 0.3s ease;">
-                        <div style="font-size: 3rem; margin-bottom: 1rem; text-align: center;">📋</div>
-                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">Examen: Sécurité des Réseaux</h3>
-                        <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1.5rem;">Évaluation complète sur la sécurité réseau</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                            <span style="font-size: 0.85rem; color: #6b7280;">50 questions</span>
-                            <span style="font-size: 0.85rem; color: #eab308; font-weight: 600;">En attente</span>
-                        </div>
-                        <button class="btn-continue" style="width: 100%; opacity: 0.6; cursor: not-allowed;" disabled>Indisponible</button>
-                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-bottom: 0.75rem;">Aucun certificat obtenu</h3>
+                    <p style="color: #6b7280; margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">Complétez vos formations pour obtenir des certificats. Chaque formation terminée vous permet d'obtenir un certificat de réussite.</p>
+                    <a href="mes-formations.html" style="display: inline-block; padding: 0.875rem 2rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.2s ease;">Voir mes formations</a>
                 </div>
             </section>
         </div>
@@ -217,6 +213,88 @@
             localStorage.removeItem('isLoggedIn');
             window.location.href = '../index.html';
         });
+
+        // Load certificates
+        function loadCertificates() {
+            const startedCourses = JSON.parse(localStorage.getItem('startedCourses') || '[]');
+            const completedCourses = startedCourses.filter(c => c.progress >= 100);
+            const container = document.getElementById('certificates-container');
+            const noCertificates = document.getElementById('no-certificates');
+
+            if (completedCourses.length === 0) {
+                container.style.display = 'none';
+                noCertificates.style.display = 'block';
+                return;
+            }
+
+            noCertificates.style.display = 'none';
+            container.innerHTML = '';
+
+            completedCourses.forEach((course, index) => {
+                const certificateCard = document.createElement('div');
+                certificateCard.style.cssText = 'background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); border: 1px solid #e5e7eb; transition: all 0.2s ease; display: flex; flex-direction: column;';
+                
+                const completionDate = course.completionDate || new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+                
+                certificateCard.innerHTML = `
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #10b981 0%, #059669 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M12 15v7"></path>
+                                <path d="M5 12H2a10 10 0 0 0 20 0h-3"></path>
+                                <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                            </svg>
+                        </div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">${course.name}</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin: 0;">Certificat de réussite</p>
+                    </div>
+                    <div style="border-top: 1px solid #e5e7eb; padding-top: 1.5rem; margin-top: auto;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; font-size: 0.875rem; color: #6b7280;">
+                            <span>Date d'obtention:</span>
+                            <span style="font-weight: 600; color: #1f2937;">${completionDate}</span>
+                        </div>
+                        <div style="display: flex; gap: 0.75rem;">
+                            <button onclick="downloadCertificate('${course.name}', '${completionDate}')" style="flex: 1; padding: 0.75rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; font-size: 0.875rem;">
+                                Télécharger PDF
+                            </button>
+                            <button onclick="shareCertificate('${course.name}')" style="padding: 0.75rem 1rem; background: #f3f4f6; color: #1f2937; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; font-size: 0.875rem;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="18" cy="5" r="3"></circle>
+                                    <circle cx="6" cy="12" r="3"></circle>
+                                    <circle cx="18" cy="19" r="3"></circle>
+                                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(certificateCard);
+            });
+        }
+
+        function downloadCertificate(courseName, date) {
+            // Simulation du téléchargement d'un certificat PDF
+            alert(`Téléchargement du certificat "${courseName}" en cours...\n\nEn production, cela générerait un PDF avec vos informations.`);
+        }
+
+        function shareCertificate(courseName) {
+            if (navigator.share) {
+                navigator.share({
+                    title: `Certificat: ${courseName}`,
+                    text: `J'ai obtenu le certificat "${courseName}" sur TERANGA SECURITY !`,
+                    url: window.location.href
+                }).catch(err => console.log('Erreur de partage:', err));
+            } else {
+                // Fallback: copier le lien
+                const text = `J'ai obtenu le certificat "${courseName}" sur TERANGA SECURITY ! ${window.location.href}`;
+                navigator.clipboard.writeText(text).then(() => {
+                    alert('Lien copié dans le presse-papiers !');
+                });
+            }
+        }
+
+        loadCertificates();
     </script>
 </body>
 </html>

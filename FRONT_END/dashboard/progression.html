@@ -14,13 +14,51 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .stat-card-compact:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+            border-color: #e5e7eb !important;
+        }
+        .course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+        }
+        .btn-continue:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+        @media (max-width: 768px) {
+            .progress-stats-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.75rem !important;
+            }
+            .stat-card-compact {
+                padding: 1rem !important;
+            }
+            .stat-icon-compact {
+                width: 40px !important;
+                height: 40px !important;
+            }
+            .stat-number {
+                font-size: 1.5rem !important;
+            }
+            .course-cards-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
 </head>
 <body class="dashboard-page">
     <!-- Sidebar -->
     <aside class="dashboard-sidebar">
         <div class="sidebar-header">
             <div class="sidebar-logo">
-                <div class="logo-icon">🛡️</div>
+                <div class="logo-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                </div>
                 <span class="logo-text">TERANGA SECURITY</span>
             </div>
             <a href="../index.html" class="btn-home" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.5rem 1rem; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; color: white; text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: all 0.3s ease;">
@@ -72,6 +110,16 @@
                             <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
                         </svg>
                         <span>Progression</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="certificats.html" class="nav-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 15v7"></path>
+                            <path d="M5 12H2a10 10 0 0 0 20 0h-3"></path>
+                            <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                        </svg>
+                        <span>Certificats</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -158,87 +206,101 @@
 
         <!-- Dashboard Content -->
         <div class="dashboard-content">
-            <section class="dashboard-section">
-                <div class="section-header">
+            <!-- Statistiques compactes -->
+            <section class="dashboard-section" style="margin-bottom: 2rem;">
+                <div class="section-header" style="margin-bottom: 1.5rem;">
                     <div>
-                        <h2 class="section-title">Statistiques de Progression</h2>
-                        <p class="section-subtitle">Vue d'ensemble de votre parcours d'apprentissage</p>
+                        <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 0.25rem;">Vue d'ensemble</h2>
+                        <p class="section-subtitle" style="font-size: 0.875rem; color: #6b7280;">Statistiques de votre progression</p>
                     </div>
                 </div>
                 
-                <!-- Motivational Message -->
-                <div id="motivational-message" style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; text-align: center;">
-                    <p style="font-size: 1.1rem; font-weight: 600; margin: 0;">💪 Continuez d'apprendre ! Chaque pas vous rapproche de l'expertise.</p>
+                <div class="progress-stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem;">
+                    <div class="stat-card-compact" style="background: white; border-radius: 12px; padding: 1.25rem; display: flex; align-items: center; gap: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); border: 1px solid #f3f4f6; transition: all 0.2s ease;">
+                        <div class="stat-icon-compact" style="width: 48px; height: 48px; border-radius: 10px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%); display: flex; align-items: center; justify-content: center; color: #3b82f6; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            </svg>
+                        </div>
+                        <div style="flex: 1; min-width: 0;">
+                            <h3 class="stat-number" id="stat-total-courses-prog" style="font-size: 1.75rem; font-weight: 700; color: #1f2937; margin: 0 0 0.25rem 0; line-height: 1.2;">0</h3>
+                            <p class="stat-label" style="font-size: 0.8125rem; color: #6b7280; margin: 0; font-weight: 500;">Formations</p>
+                        </div>
+                    </div>
+                    <div class="stat-card-compact" style="background: white; border-radius: 12px; padding: 1.25rem; display: flex; align-items: center; gap: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); border: 1px solid #f3f4f6; transition: all 0.2s ease;">
+                        <div class="stat-icon-compact" style="width: 48px; height: 48px; border-radius: 10px; background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(22, 163, 74, 0.1) 100%); display: flex; align-items: center; justify-content: center; color: #22c55e; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <div style="flex: 1; min-width: 0;">
+                            <h3 class="stat-number" id="stat-completed-courses-prog" style="font-size: 1.75rem; font-weight: 700; color: #1f2937; margin: 0 0 0.25rem 0; line-height: 1.2;">0</h3>
+                            <p class="stat-label" style="font-size: 0.8125rem; color: #6b7280; margin: 0; font-weight: 500;">Complétées</p>
+                        </div>
+                    </div>
+                    <div class="stat-card-compact" style="background: white; border-radius: 12px; padding: 1.25rem; display: flex; align-items: center; gap: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); border: 1px solid #f3f4f6; transition: all 0.2s ease;">
+                        <div class="stat-icon-compact" style="width: 48px; height: 48px; border-radius: 10px; background: linear-gradient(135deg, rgba(234, 179, 8, 0.1) 0%, rgba(202, 138, 4, 0.1) 100%); display: flex; align-items: center; justify-content: center; color: #eab308; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <div style="flex: 1; min-width: 0;">
+                            <h3 class="stat-number" id="stat-total-time-prog" style="font-size: 1.75rem; font-weight: 700; color: #1f2937; margin: 0 0 0.25rem 0; line-height: 1.2;">0h</h3>
+                            <p class="stat-label" style="font-size: 0.8125rem; color: #6b7280; margin: 0; font-weight: 500;">Temps total</p>
+                        </div>
+                    </div>
+                    <div class="stat-card-compact" style="background: white; border-radius: 12px; padding: 1.25rem; display: flex; align-items: center; gap: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); border: 1px solid #f3f4f6; transition: all 0.2s ease;">
+                        <div class="stat-icon-compact" style="width: 48px; height: 48px; border-radius: 10px; background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(107, 33, 168, 0.1) 100%); display: flex; align-items: center; justify-content: center; color: #8b5cf6; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 15v7"></path>
+                                <path d="M5 12H2a10 10 0 0 0 20 0h-3"></path>
+                                <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                            </svg>
+                </div>
+                        <div style="flex: 1; min-width: 0;">
+                            <h3 class="stat-number" id="stat-badges-prog" style="font-size: 1.75rem; font-weight: 700; color: #1f2937; margin: 0 0 0.25rem 0; line-height: 1.2;">0/12</h3>
+                            <p class="stat-label" style="font-size: 0.8125rem; color: #6b7280; margin: 0; font-weight: 500;">Badges</p>
+                        </div>
+                    </div>
+                    <div class="stat-card-compact" style="background: white; border-radius: 12px; padding: 1.25rem; display: flex; align-items: center; gap: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); border: 1px solid #f3f4f6; transition: all 0.2s ease;">
+                        <div class="stat-icon-compact" style="width: 48px; height: 48px; border-radius: 10px; background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%); display: flex; align-items: center; justify-content: center; color: #ef4444; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                            </svg>
+                        </div>
+                        <div style="flex: 1; min-width: 0;">
+                            <h3 class="stat-number" id="stat-streak-prog" style="font-size: 1.75rem; font-weight: 700; color: #1f2937; margin: 0 0 0.25rem 0; line-height: 1.2;">0</h3>
+                            <p class="stat-label" style="font-size: 0.8125rem; color: #6b7280; margin: 0; font-weight: 500;">Jours consécutifs</p>
+                        </div>
+                    </div>
+                    <div class="stat-card-compact" style="background: white; border-radius: 12px; padding: 1.25rem; display: flex; align-items: center; gap: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); border: 1px solid #f3f4f6; transition: all 0.2s ease;">
+                        <div class="stat-icon-compact" style="width: 48px; height: 48px; border-radius: 10px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%); display: flex; align-items: center; justify-content: center; color: #3b82f6; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                        </div>
+                        <div style="flex: 1; min-width: 0;">
+                            <h3 class="stat-number" id="stat-average-progress-prog" style="font-size: 1.75rem; font-weight: 700; color: #1f2937; margin: 0 0 0.25rem 0; line-height: 1.2;">0%</h3>
+                            <p class="stat-label" style="font-size: 0.8125rem; color: #6b7280; margin: 0; font-weight: 500;">Progression</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Formations en cours -->
+            <section class="dashboard-section">
+                <div class="section-header" style="margin-bottom: 1.5rem;">
+                    <div>
+                        <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 0.25rem;">Formations en cours</h2>
+                        <p class="section-subtitle" style="font-size: 0.875rem; color: #6b7280;">Continuez votre apprentissage</p>
+                    </div>
                 </div>
 
-                <div class="progress-stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
-                    <div class="stat-card" style="background: white; border-radius: 16px; padding: 2rem; display: flex; align-items: center; gap: 1.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
-                        <div class="stat-icon" style="width: 64px; height: 64px; border-radius: 16px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%); display: flex; align-items: center; justify-content: center; color: #3b82f6; font-size: 2rem;">📚</div>
-                        <div class="stat-info">
-                            <h3 class="stat-number" style="font-size: 2.5rem; font-weight: 800; color: #1f2937; margin: 0 0 0.5rem 0;">2</h3>
-                            <p class="stat-label" style="font-size: 0.95rem; color: #6b7280; margin: 0;">Formations en cours</p>
-                        </div>
-                    </div>
-                    <div class="stat-card" style="background: white; border-radius: 16px; padding: 2rem; display: flex; align-items: center; gap: 1.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
-                        <div class="stat-icon" style="width: 64px; height: 64px; border-radius: 16px; background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(22, 163, 74, 0.1) 100%); display: flex; align-items: center; justify-content: center; color: #22c55e; font-size: 2rem;">✓</div>
-                        <div class="stat-info">
-                            <h3 class="stat-number" style="font-size: 2.5rem; font-weight: 800; color: #1f2937; margin: 0 0 0.5rem 0;">52%</h3>
-                            <p class="stat-label" style="font-size: 0.95rem; color: #6b7280; margin: 0;">Progression moyenne</p>
-                        </div>
-                    </div>
-                    <div class="stat-card" style="background: white; border-radius: 16px; padding: 2rem; display: flex; align-items: center; gap: 1.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
-                        <div class="stat-icon" style="width: 64px; height: 64px; border-radius: 16px; background: linear-gradient(135deg, rgba(234, 179, 8, 0.1) 0%, rgba(202, 138, 4, 0.1) 100%); display: flex; align-items: center; justify-content: center; color: #eab308; font-size: 2rem;">⏱️</div>
-                        <div class="stat-info">
-                            <h3 class="stat-number" style="font-size: 2.5rem; font-weight: 800; color: #1f2937; margin: 0 0 0.5rem 0;">12h</h3>
-                            <p class="stat-label" style="font-size: 0.95rem; color: #6b7280; margin: 0;">Heures complétées</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="course-cards-grid">
-                    <div class="course-card">
-                        <div class="course-image">
-                            <div class="course-progress">
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 65%"></div>
-                                </div>
-                                <span class="progress-text">65%</span>
-                            </div>
-                        </div>
-                        <div class="course-content">
-                            <h3 class="course-title">Introduction à la Cybersécurité</h3>
-                            <p class="course-description">
-                                Découvrez les bases de la cybersécurité : menaces, vulnérabilités, et bonnes pratiques essentielles.
-                            </p>
-                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem; font-size: 0.85rem; color: #6b7280;">
-                                <span>📅 Débuté le: 15 Jan 2024</span>
-                                <span>⏱️ 13h / 20h</span>
-                            </div>
-                            <a href="../formation/cours-introduction-cybersecurite.html" class="btn-continue">Continuer</a>
-                        </div>
-                    </div>
-
-                    <div class="course-card">
-                        <div class="course-image">
-                            <div class="course-progress">
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 40%"></div>
-                                </div>
-                                <span class="progress-text">40%</span>
-                            </div>
-                        </div>
-                        <div class="course-content">
-                            <h3 class="course-title">Sécurité des Réseaux</h3>
-                            <p class="course-description">
-                                Apprenez à sécuriser les réseaux informatiques : firewall, VPN, IDS/IPS et protection contre les attaques.
-                            </p>
-                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem; font-size: 0.85rem; color: #6b7280;">
-                                <span>📅 Débuté le: 20 Jan 2024</span>
-                                <span>⏱️ 16h / 40h</span>
-                            </div>
-                            <a href="../formation/cours-securite-reseaux.html" class="btn-continue">Continuer</a>
-                        </div>
-                    </div>
+                <div class="course-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem;">
+                    <!-- Les formations seront chargées dynamiquement ici (maximum 5) -->
                 </div>
             </section>
         </div>
@@ -248,6 +310,8 @@
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
     <script src="../script.js"></script>
+    <script src="../dashboard-functions.js"></script>
+    <script src="statistics-enhanced.js"></script>
     <script src="dashboard-mobile-nav.js"></script>
     <script>
         if (localStorage.getItem('isLoggedIn') !== 'true') {
@@ -260,42 +324,122 @@
             window.location.href = '../index.html';
         });
         
-        // Motivational messages
-        const motivationalMessages = [
-            "💪 Continuez d'apprendre ! Chaque pas vous rapproche de l'expertise.",
-            "🚀 La persévérance est la clé du succès. Vous progressez bien !",
-            "⭐ Bravo pour votre engagement ! Votre apprentissage porte ses fruits.",
-            "🎯 Vous êtes sur la bonne voie ! Continuez ainsi.",
-            "💎 L'excellence n'est pas une destination, c'est un voyage. Continuez !",
-            "📚 Chaque leçon apprise renforce votre expertise. Excellent travail !",
-            "🔥 Votre détermination est impressionnante. Ne lâchez rien !",
-            "🌟 La cybersécurité évolue, et vous aussi. Continuez à grandir !"
-        ];
         
-        let currentIndex = 0;
-        const motivationalDiv = document.getElementById('motivational-message');
-        
-        function updateMotivationalMessage() {
-            if (motivationalDiv) {
-                motivationalDiv.querySelector('p').textContent = motivationalMessages[currentIndex];
-                currentIndex = (currentIndex + 1) % motivationalMessages.length;
-            }
-        }
-        
-        // Change message every 5 minutes (300000ms)
-        setInterval(updateMotivationalMessage, 5 * 60 * 1000);
-        
-        // Progress chart data
+        // Load courses dynamically (limit to 5)
         const startedCourses = JSON.parse(localStorage.getItem('startedCourses') || '[]');
-        const totalProgress = startedCourses.length > 0 ? 
-            startedCourses.reduce((sum, c) => sum + (c.progress || 0), 0) / startedCourses.length : 0;
+        const courseGrid = document.querySelector('.course-cards-grid');
         
-        // Update stats
-        if (startedCourses.length > 0) {
-            document.querySelector('.stat-number').textContent = startedCourses.length;
-            const progressStat = document.querySelectorAll('.stat-number')[1];
-            if (progressStat) progressStat.textContent = Math.round(totalProgress) + '%';
+        if (courseGrid && startedCourses.length > 0) {
+            courseGrid.innerHTML = '';
+            // Limiter à 5 formations
+            const coursesToShow = startedCourses.slice(0, 5);
+            coursesToShow.forEach(course => {
+                const progress = course.progress || 0;
+                const gradientColors = [
+                    ['#3b82f6', '#2563eb'],
+                    ['#10b981', '#059669'],
+                    ['#8b5cf6', '#7c3aed'],
+                    ['#f59e0b', '#d97706'],
+                    ['#ef4444', '#dc2626']
+                ];
+                const colors = gradientColors[Math.floor(Math.random() * gradientColors.length)];
+                
+                const courseCard = document.createElement('div');
+                courseCard.className = 'course-card';
+                courseCard.style.cssText = 'background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); border: 1px solid #e5e7eb; transition: all 0.2s ease; display: flex; flex-direction: column;';
+                courseCard.innerHTML = `
+                    <div class="course-image" style="background: linear-gradient(135deg, ${colors[0]} 0%, ${colors[1]} 100%); padding: 1.5rem; position: relative;">
+                        <div class="course-progress" style="background: rgba(255, 255, 255, 0.2); border-radius: 8px; padding: 0.75rem; backdrop-filter: blur(10px);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <span style="font-size: 0.8125rem; font-weight: 600; color: white;">Progression</span>
+                                <span class="progress-text" style="font-size: 0.875rem; font-weight: 700; color: white;">${progress}%</span>
+                            </div>
+                            <div class="progress-bar" style="height: 6px; background: rgba(255, 255, 255, 0.3); border-radius: 3px; overflow: hidden;">
+                                <div class="progress-fill" style="width: ${progress}%; height: 100%; background: white; border-radius: 3px; transition: width 0.3s ease;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-content" style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
+                        <h3 class="course-title" style="font-size: 1.125rem; font-weight: 700; color: #1f2937; margin: 0 0 0.75rem 0; line-height: 1.4;">${course.name}</h3>
+                        <p class="course-description" style="font-size: 0.875rem; color: #6b7280; line-height: 1.6; margin: 0 0 1rem 0; flex: 1;">Formation en cours...</p>
+                        <div style="display: flex; gap: 1rem; margin-bottom: 1rem; font-size: 0.8125rem; color: #9ca3af; flex-wrap: wrap;">
+                            <span style="display: flex; align-items: center; gap: 0.375rem;">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                ${course.startDate || 'Récemment'}
+                            </span>
+                            <span style="display: flex; align-items: center; gap: 0.375rem;">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                ${Math.floor((course.timeSpent || 0) / 3600)}h
+                            </span>
+                        </div>
+                        <a href="${course.url}" class="btn-continue" style="display: inline-block; text-align: center; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, ${colors[0]} 0%, ${colors[1]} 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 0.875rem; transition: all 0.2s ease;">Continuer</a>
+                    </div>
+                `;
+                courseGrid.appendChild(courseCard);
+            });
         }
+        
+        // Update all statistics
+        function updateAllStats() {
+            const startedCourses = JSON.parse(localStorage.getItem('startedCourses') || '[]');
+            const unlockedBadges = JSON.parse(localStorage.getItem('unlockedBadges') || '[]');
+            const loginHistory = JSON.parse(localStorage.getItem('loginHistory') || '[]');
+            
+            // Total courses
+            const totalCourses = startedCourses.length;
+            const totalCoursesEl = document.getElementById('stat-total-courses-prog');
+            if (totalCoursesEl) totalCoursesEl.textContent = totalCourses;
+            
+            // Completed courses
+            const completedCourses = startedCourses.filter(c => c.progress >= 100).length;
+            const completedCoursesEl = document.getElementById('stat-completed-courses-prog');
+            if (completedCoursesEl) completedCoursesEl.textContent = completedCourses;
+            
+            // Total time
+            const totalTimeSpent = startedCourses.reduce((sum, c) => sum + (c.timeSpent || 0), 0);
+            const hoursSpent = Math.floor(totalTimeSpent / 3600);
+            const totalTimeEl = document.getElementById('stat-total-time-prog');
+            if (totalTimeEl) totalTimeEl.textContent = hoursSpent + 'h';
+            
+            // Badges
+            const badgesEl = document.getElementById('stat-badges-prog');
+            if (badgesEl) badgesEl.textContent = unlockedBadges.length + '/12';
+            
+            // Streak
+            function calculateStreak(history) {
+                if (history.length === 0) return 0;
+                const today = new Date().toDateString();
+                const sorted = history.map(d => new Date(d).toDateString()).sort().reverse().filter((d, i, arr) => arr.indexOf(d) === i);
+                if (sorted[0] !== today && sorted[0] !== new Date(Date.now() - 86400000).toDateString()) return 0;
+                let streak = 1;
+                for (let i = 1; i < sorted.length; i++) {
+                    const prev = new Date(sorted[i - 1]);
+                    const curr = new Date(sorted[i]);
+                    if (Math.floor((prev - curr) / (1000 * 60 * 60 * 24)) === 1) streak++;
+                    else break;
+                }
+                return streak;
+            }
+            const streak = calculateStreak(loginHistory);
+            const streakEl = document.getElementById('stat-streak-prog');
+            if (streakEl) streakEl.textContent = streak;
+            
+            // Average progress
+            const avgProgress = totalCourses > 0 
+                ? Math.round(startedCourses.reduce((sum, c) => sum + (c.progress || 0), 0) / totalCourses)
+                : 0;
+            const avgProgressEl = document.getElementById('stat-average-progress-prog');
+            if (avgProgressEl) avgProgressEl.textContent = avgProgress + '%';
+        }
+        
+        updateAllStats();
+        window.addEventListener('progressUpdated', updateAllStats);
     </script>
 </body>
 </html>

@@ -8,6 +8,273 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #f9fafb;
+            font-family: 'Inter', sans-serif;
+        }
+        .room-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .room-header {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        .room-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        .room-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+        .room-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .meta-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .room-progress {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .progress-header h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin: 0;
+        }
+        .progress-bar-wrapper {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+        .progress-text {
+            font-size: 0.875rem;
+            color: #6b7280;
+            font-weight: 600;
+        }
+        .task-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .task-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        .task-number {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .task-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin: 0;
+        }
+        .task-content {
+            color: #374151;
+            line-height: 1.8;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+        .task-content p {
+            margin-bottom: 1rem;
+        }
+        .task-content h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .task-content h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .highlight-box {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        .success-box {
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        .question-section {
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        .question-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .question-input-group {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .question-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .question-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        .btn-submit {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+        .btn-submit:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .answer-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            display: none;
+        }
+        .answer-feedback.correct {
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+            color: #065f46;
+        }
+        .answer-feedback.incorrect {
+            background: #fee2e2;
+            border-left: 4px solid #ef4444;
+            color: #991b1b;
+        }
+        .info-box {
+            background: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: #0c4a6e;
+        }
+        .module-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e5e7eb;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .btn-nav {
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-prev {
+            background: #f3f4f6;
+            color: #1f2937;
+        }
+        .btn-next {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+        }
+        .btn-complete {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            margin-left: auto;
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -50,15 +317,598 @@
         </nav>
     </header>
 
-    <section class="course-page">
-        <div class="container">
-            <div class="course-unavailable" style="text-align: center; padding: 4rem 2rem; max-width: 600px; margin: 4rem auto;">
-                <div class="unavailable-icon" style="font-size: 5rem; margin-bottom: 2rem;">🚧</div>
-                <h2 style="font-size: 2rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem;">Ce module est indisponible pour le moment</h2>
-                <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem; line-height: 1.6;">
-                    Le contenu de ce module sera disponible prochainement.
-                </p>
-                <a href="../cours-introduction-cybersecurite.html" style="display: inline-block; padding: 0.875rem 2rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s ease;">Retour à la formation</a>
+    <section class="course-page" style="padding: 2rem 0;">
+        <div class="room-container">
+            <!-- Room Header -->
+            <div class="room-header">
+                <h1>Module 1 : Introduction à la cybersécurité</h1>
+                <p>Découvrez les concepts fondamentaux de la cybersécurité et son importance dans le monde numérique, particulièrement dans le contexte sénégalais.</p>
+                <div class="room-meta">
+                    <span class="meta-badge">Niveau: Débutant</span>
+                    <span class="meta-badge">Durée: 2 heures</span>
+                    <span class="meta-badge">5 Tâches</span>
+                </div>
+            </div>
+
+            <!-- Room Progress -->
+            <div class="room-progress">
+                <div class="progress-header">
+                    <h2>Progression du module</h2>
+                    <span class="progress-text" id="room-progress-text">0%</span>
+                </div>
+                <div class="progress-bar-wrapper">
+                    <div class="progress-bar-fill" id="room-progress-bar" style="width: 0%"></div>
+                </div>
+                <p class="progress-text" style="margin-top: 0.5rem; margin-bottom: 0;">Pour accéder au contenu, connectez-vous et commencez les tâches.</p>
+            </div>
+
+            <!-- Task 1 -->
+            <div class="task-section" id="task-1">
+                <div class="task-header">
+                    <div class="task-number">1</div>
+                    <h2 class="task-title">Qu'est-ce que la cybersécurité ?</h2>
+                </div>
+                <div class="task-content">
+                    <p>"Pour déjouer un pirate, vous devez penser comme un pirate."</p>
+                    <p>C'est l'essence de la cybersécurité. Elle implique de protéger les systèmes informatiques, les réseaux, les programmes et les données contre les attaques, les dommages ou les accès non autorisés. L'objectif est de comprendre les tactiques des pirates et d'améliorer nos défenses système.</p>
+                    
+                    <h3>Débuter votre parcours d'apprentissage</h3>
+                    <p>Dans ce module TERANGA SECURITY, vous serez guidé à travers les concepts fondamentaux de la cybersécurité. L'objectif est de vous montrer comment fonctionne la protection numérique et pourquoi elle est essentielle, particulièrement au Sénégal.</p>
+                    <p>Avant de continuer, révisons en répondant aux questions ci-dessous. Tapez votre réponse dans la zone de texte après la question et cliquez sur le bouton "Soumettre". Lorsque vous avez terminé, passez à la Tâche 2.</p>
+
+                    <div class="highlight-box">
+                        <strong>Définition clé :</strong> La cybersécurité vise à assurer la <strong>confidentialité</strong>, l'<strong>intégrité</strong> et la <strong>disponibilité</strong> des informations (principe CID).
+                    </div>
+
+                    <h3>Les trois piliers de la cybersécurité (CID)</h3>
+                    <p>La cybersécurité repose sur trois principes fondamentaux, souvent appelés le "triangle CID" :</p>
+                    
+                    <div style="display: grid; gap: 1.5rem; margin: 2rem 0;">
+                        <div style="background: #eff6ff; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #3b82f6;">
+                            <h4>Confidentialité</h4>
+                            <p style="color: #374151; line-height: 1.8; margin: 0.5rem 0 0 0;">
+                                <strong>Définition :</strong> Assurer que seules les personnes autorisées peuvent accéder aux informations.
+                            </p>
+                            <p style="color: #4b5563; line-height: 1.8; margin-top: 0.75rem; margin-bottom: 0;">
+                                <strong>Exemple concret :</strong> C'est comme avoir une boîte aux lettres avec une clé. Seule la personne qui a la clé peut lire ses lettres. En cybersécurité, cela signifie que vos emails, vos mots de passe et vos informations personnelles ne peuvent être lus que par vous ou les personnes que vous autorisez.
+                            </p>
+                        </div>
+                        
+                        <div style="background: #f0fdf4; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #10b981;">
+                            <h4>Intégrité</h4>
+                            <p style="color: #374151; line-height: 1.8; margin: 0.5rem 0 0 0;">
+                                <strong>Définition :</strong> Garantir que les données n'ont pas été modifiées de manière non autorisée.
+                            </p>
+                            <p style="color: #4b5563; line-height: 1.8; margin-top: 0.75rem; margin-bottom: 0;">
+                                <strong>Exemple concret :</strong> Imaginez que vous envoyez un document important. L'intégrité garantit que le document arrive exactement comme vous l'avez envoyé, sans qu'une personne malveillante n'ait modifié son contenu. C'est comme sceller une enveloppe avec un sceau de cire - si le sceau est cassé, vous savez que quelqu'un a ouvert l'enveloppe.
+                            </p>
+                        </div>
+                        
+                        <div style="background: #fef3c7; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #f59e0b;">
+                            <h4>Disponibilité</h4>
+                            <p style="color: #374151; line-height: 1.8; margin: 0.5rem 0 0 0;">
+                                <strong>Définition :</strong> S'assurer que les systèmes et données sont accessibles quand nécessaire.
+                            </p>
+                            <p style="color: #4b5563; line-height: 1.8; margin-top: 0.75rem; margin-bottom: 0;">
+                                <strong>Exemple concret :</strong> C'est comme s'assurer que votre téléphone fonctionne quand vous en avez besoin. Si un pirate informatique bloque l'accès à votre site web ou à vos données (ce qu'on appelle une "attaque par déni de service"), la disponibilité est compromise. La cybersécurité garantit que vos services restent accessibles.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3>Pourquoi la cybersécurité est-elle importante ?</h3>
+                    <p>Dans notre monde de plus en plus numérique, la cybersécurité est essentielle. Voici pourquoi, expliqué de manière simple :</p>
+                    
+                    <div style="background: #f9fafb; padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0;">
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 1rem; margin-bottom: 0.75rem; background: white; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                                <strong style="color: #1f2937; display: block; margin-bottom: 0.5rem;">Protéger vos informations personnelles</strong>
+                                <p style="color: #4b5563; margin: 0; line-height: 1.7;">
+                                    Vos photos, vos messages, vos coordonnées bancaires - tout cela doit rester privé. Sans cybersécurité, n'importe qui pourrait voler ces informations.
+                                </p>
+                            </li>
+                            <li style="padding: 1rem; margin-bottom: 0.75rem; background: white; border-radius: 8px; border-left: 4px solid #10b981;">
+                                <strong style="color: #1f2937; display: block; margin-bottom: 0.5rem;">Préserver la réputation des entreprises</strong>
+                                <p style="color: #4b5563; margin: 0; line-height: 1.7;">
+                                    Si une entreprise est piratée, les clients perdent confiance. C'est comme si un magasin était cambriolé - les clients hésitent à y retourner.
+                                </p>
+                            </li>
+                            <li style="padding: 1rem; margin-bottom: 0.75rem; background: white; border-radius: 8px; border-left: 4px solid #f59e0b;">
+                                <strong style="color: #1f2937; display: block; margin-bottom: 0.5rem;">Maintenir la continuité des activités</strong>
+                                <p style="color: #4b5563; margin: 0; line-height: 1.7;">
+                                    Si un système est attaqué et bloqué, une entreprise ne peut plus fonctionner. C'est comme si toutes les portes d'un magasin étaient verrouillées - personne ne peut entrer ou sortir.
+                                </p>
+                            </li>
+                            <li style="padding: 1rem; margin-bottom: 0.75rem; background: white; border-radius: 8px; border-left: 4px solid #8b5cf6;">
+                                <strong style="color: #1f2937; display: block; margin-bottom: 0.5rem;">Respecter les réglementations</strong>
+                                <p style="color: #4b5563; margin: 0; line-height: 1.7;">
+                                    Des lois comme le RGPD (en Europe) exigent que les entreprises protègent les données de leurs clients. Ne pas le faire peut entraîner de lourdes amendes.
+                                </p>
+                            </li>
+                            <li style="padding: 1rem; background: white; border-radius: 8px; border-left: 4px solid #ef4444;">
+                                <strong style="color: #1f2937; display: block; margin-bottom: 0.5rem;">Protéger les infrastructures critiques</strong>
+                                <p style="color: #4b5563; margin: 0; line-height: 1.7;">
+                                    Les hôpitaux, les banques, les centrales électriques - si ces systèmes sont attaqués, cela peut mettre des vies en danger. La cybersécurité protège ces infrastructures vitales.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="question-section">
+                        <div class="question-title">Répondez aux questions ci-dessous</div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <p style="font-weight: 600; margin-bottom: 0.75rem; color: #1f2937;">Quelle option représente mieux le processus où vous simulez les actions d'un pirate pour trouver des vulnérabilités dans un système ?</p>
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; background: white; border-radius: 8px; cursor: pointer; transition: all 0.2s ease; border: 2px solid #e5e7eb;">
+                                    <input type="radio" name="q1" value="Offensive Security" style="cursor: pointer;">
+                                    <span>Offensive Security</span>
+                                </label>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; background: white; border-radius: 8px; cursor: pointer; transition: all 0.2s ease; border: 2px solid #e5e7eb;">
+                                    <input type="radio" name="q1" value="Defensive Security" style="cursor: pointer;">
+                                    <span>Defensive Security</span>
+                                </label>
+                            </div>
+                            <div class="question-input-group">
+                                <input type="text" class="question-input" id="answer-q1" placeholder="Tapez votre réponse ici">
+                                <button class="btn-submit" onclick="submitAnswer('q1', 'Offensive Security')">Soumettre</button>
+                            </div>
+                            <div class="answer-feedback" id="feedback-q1"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task 2 -->
+            <div class="task-section" id="task-2">
+                <div class="task-header">
+                    <div class="task-number">2</div>
+                    <h2 class="task-title">Le contexte sénégalais</h2>
+                </div>
+                <div class="task-content">
+                    <p>Au Sénégal, la transformation numérique s'accélère rapidement. De plus en plus de Sénégalais utilisent Internet, les smartphones, et les services numériques. Mais cette croissance s'accompagne de nouveaux défis en matière de sécurité.</p>
+                    
+                    <p><strong>Pourquoi c'est important pour nous :</strong> Le Sénégal est en pleine transformation digitale. Nous devons comprendre les risques pour mieux nous protéger, que ce soit en tant qu'individus, entreprises ou institutions.</p>
+
+                    <h3>Enjeux spécifiques au Sénégal</h3>
+                    
+                    <div style="display: grid; gap: 1.25rem; margin: 2rem 0;">
+                        <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 1.5rem; border-radius: 12px; border: 1px solid #fbbf24;">
+                            <h4>Croissance du e-commerce</h4>
+                            <p style="color: #78350f; line-height: 1.8; margin: 0;">
+                                De plus en plus de Sénégalais achètent en ligne. <strong>Le défi :</strong> Protéger les transactions et les informations de paiement. <strong>La solution :</strong> Utiliser des sites sécurisés (avec HTTPS) et ne jamais partager ses codes de carte bancaire.
+                            </p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); padding: 1.5rem; border-radius: 12px; border: 1px solid #60a5fa;">
+                            <h4>Digitalisation des services publics</h4>
+                            <p style="color: #1e3a8a; line-height: 1.8; margin: 0;">
+                                L'État sénégalais digitalise ses services (paiement d'impôts en ligne, démarches administratives, etc.). <strong>Le défi :</strong> Sécuriser les données des citoyens. <strong>La solution :</strong> Mettre en place des systèmes de sécurité robustes et former les fonctionnaires.
+                            </p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 1.5rem; border-radius: 12px; border: 1px solid #34d399;">
+                            <h4>Bancarisation mobile</h4>
+                            <p style="color: #047857; line-height: 1.8; margin: 0;">
+                                Orange Money, Free Money, Wave - des millions de Sénégalais utilisent ces services. <strong>Le défi :</strong> Protéger les transactions financières contre le vol. <strong>La solution :</strong> Ne jamais partager son code PIN, activer l'authentification à deux facteurs, et vérifier chaque transaction.
+                            </p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%); padding: 1.5rem; border-radius: 12px; border: 1px solid #c084fc;">
+                            <h4>PME et startups</h4>
+                            <p style="color: #7c3aed; line-height: 1.8; margin: 0;">
+                                Les petites et moyennes entreprises sénégalaises sont souvent moins protégées. <strong>Le défi :</strong> Manque de ressources et de connaissances en cybersécurité. <strong>La solution :</strong> Formation des employés, utilisation d'outils de sécurité de base, et sensibilisation continue.
+                            </p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); padding: 1.5rem; border-radius: 12px; border: 1px solid #f9a8d4;">
+                            <h4>Éducation</h4>
+                            <p style="color: #be185d; line-height: 1.8; margin: 0;">
+                                Former les jeunes Sénégalais est essentiel pour l'avenir. <strong>Le défi :</strong> Sensibiliser dès le plus jeune âge. <strong>La solution :</strong> Intégrer la cybersécurité dans les programmes scolaires et créer des formations accessibles comme celle-ci !
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="warning-box">
+                        <div style="display: flex; align-items: start; gap: 1rem;">
+                            <div style="font-size: 2rem; flex-shrink: 0;">⚠️</div>
+                            <div>
+                                <strong style="display: block; margin-bottom: 0.5rem; color: #92400e;">Statistique importante</strong>
+                                <p style="color: #78350f; margin: 0; line-height: 1.8;">
+                                    Selon les rapports internationaux, les cyberattaques en Afrique de l'Ouest ont augmenté de <strong>plus de 200%</strong> ces dernières années. Le Sénégal n'est pas épargné. C'est pourquoi il est crucial de se former et de se protéger dès maintenant.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question-section">
+                        <div class="question-title">Répondez aux questions ci-dessous</div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <p style="font-weight: 600; margin-bottom: 0.75rem; color: #1f2937;">Quel est le principal défi de la cybersécurité au Sénégal selon ce module ?</p>
+                            <div class="question-input-group">
+                                <input type="text" class="question-input" id="answer-q2" placeholder="Tapez votre réponse ici">
+                                <button class="btn-submit" onclick="submitAnswer('q2', 'transformation digitale rapide')">Soumettre</button>
+                            </div>
+                            <div class="answer-feedback" id="feedback-q2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task 3 -->
+            <div class="task-section" id="task-3">
+                <div class="task-header">
+                    <div class="task-number">3</div>
+                    <h2 class="task-title">Domaines de la cybersécurité</h2>
+                </div>
+                <div class="task-content">
+                    <p>La cybersécurité couvre plusieurs domaines spécialisés. Chaque domaine se concentre sur un aspect particulier de la protection numérique. Voici les principaux domaines, expliqués simplement :</p>
+                    
+                    <div style="display: grid; gap: 1.5rem; margin: 2rem 0;">
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid #e5e7eb; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                            <h4>Sécurité des réseaux</h4>
+                            <p style="color: #4b5563; line-height: 1.8; margin-bottom: 1rem;">
+                                <strong>Définition simple :</strong> Protéger les connexions entre vos appareils (ordinateurs, téléphones, serveurs) contre les intrusions et les attaques.
+                            </p>
+                            <p style="color: #6b7280; line-height: 1.8; margin: 0;">
+                                <strong>Exemple concret :</strong> C'est comme sécuriser toutes les routes qui relient différentes villes. Les pare-feu (firewalls) agissent comme des postes de contrôle qui vérifient qui peut entrer et sortir de votre réseau. Les VPN (réseaux privés virtuels) créent des "tunnels sécurisés" pour vos données, comme un passage souterrain secret.
+                            </p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid #e5e7eb; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                            <h4>Sécurité des applications</h4>
+                            <p style="color: #4b5563; line-height: 1.8; margin-bottom: 1rem;">
+                                <strong>Définition simple :</strong> S'assurer que les logiciels et applications (apps) que vous utilisez sont sécurisés et ne contiennent pas de failles exploitables.
+                            </p>
+                            <p style="color: #6b7280; line-height: 1.8; margin: 0;">
+                                <strong>Exemple concret :</strong> C'est comme vérifier qu'une voiture n'a pas de défauts avant de la conduire. Les développeurs doivent tester leurs applications pour trouver et corriger les failles avant qu'elles ne soient exploitées par des pirates. Les mises à jour de sécurité corrigent ces failles, c'est pourquoi il est important de toujours mettre à jour vos apps.
+                            </p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid #e5e7eb; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                            <h4>Sécurité de l'information</h4>
+                            <p style="color: #4b5563; line-height: 1.8; margin-bottom: 1rem;">
+                                <strong>Définition simple :</strong> Protéger vos données sensibles (mots de passe, informations personnelles, documents confidentiels) contre l'accès non autorisé.
+                            </p>
+                            <p style="color: #6b7280; line-height: 1.8; margin: 0;">
+                                <strong>Exemple concret :</strong> C'est comme mettre vos documents importants dans un coffre-fort. Le chiffrement transforme vos données en code secret que seules les personnes autorisées peuvent décoder. Même si quelqu'un vole vos données, il ne pourra pas les lire sans la "clé" de déchiffrement.
+                            </p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid #e5e7eb; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                            <h4>Sécurité opérationnelle</h4>
+                            <p style="color: #4b5563; line-height: 1.8; margin-bottom: 1rem;">
+                                <strong>Définition simple :</strong> Les processus et procédures quotidiens pour gérer et protéger vos systèmes informatiques.
+                            </p>
+                            <p style="color: #6b7280; line-height: 1.8; margin: 0;">
+                                <strong>Exemple concret :</strong> C'est comme avoir un plan de sécurité pour votre entreprise. Qui a accès à quoi ? Comment gérer les mots de passe ? Que faire en cas d'incident ? La sécurité opérationnelle établit ces règles et s'assure qu'elles sont suivies.
+                            </p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid #e5e7eb; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                            <h4>Récupération après sinistre</h4>
+                            <p style="color: #4b5563; line-height: 1.8; margin-bottom: 1rem;">
+                                <strong>Définition simple :</strong> Avoir un plan pour restaurer vos systèmes et données après une attaque ou un incident.
+                            </p>
+                            <p style="color: #6b7280; line-height: 1.8; margin: 0;">
+                                <strong>Exemple concret :</strong> C'est comme avoir une assurance et des sauvegardes. Si votre ordinateur est attaqué et vos données sont perdues, la récupération après sinistre vous permet de restaurer tout depuis une sauvegarde. C'est pourquoi il est crucial de faire des sauvegardes régulières !
+                            </p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid #e5e7eb; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                            <h4>Formation des utilisateurs</h4>
+                            <p style="color: #4b5563; line-height: 1.8; margin-bottom: 1rem;">
+                                <strong>Définition simple :</strong> Éduquer les utilisateurs (vous, moi, tout le monde) sur les bonnes pratiques de sécurité.
+                            </p>
+                            <p style="color: #6b7280; line-height: 1.8; margin: 0;">
+                                <strong>Exemple concret :</strong> C'est exactement ce que vous faites en ce moment ! La plupart des attaques réussissent parce que les utilisateurs ne connaissent pas les risques. En vous formant, vous apprenez à reconnaître les emails de phishing, à créer des mots de passe forts, et à éviter les pièges courants. <strong>Vous êtes votre meilleure défense !</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="question-section">
+                        <div class="question-title">Répondez aux questions ci-dessous</div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <p style="font-weight: 600; margin-bottom: 0.75rem; color: #1f2937;">Quel domaine de la cybersécurité se concentre sur la protection des connexions entre appareils ?</p>
+                            <div class="question-input-group">
+                                <input type="text" class="question-input" id="answer-q3" placeholder="Tapez votre réponse ici">
+                                <button class="btn-submit" onclick="submitAnswer('q3', 'Sécurité des réseaux')">Soumettre</button>
+                            </div>
+                            <div class="answer-feedback" id="feedback-q3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task 4 -->
+            <div class="task-section" id="task-4">
+                <div class="task-header">
+                    <div class="task-number">4</div>
+                    <h2 class="task-title">Vocabulaire essentiel</h2>
+                </div>
+                <div class="task-content">
+                    <p>Pour bien comprendre la cybersécurité, il est important de connaître les termes de base. Voici un glossaire simple et accessible :</p>
+                    
+                    <div style="display: grid; gap: 1rem; margin: 2rem 0;">
+                        <div style="background: #f9fafb; padding: 1.25rem; border-radius: 10px; border-left: 4px solid #3b82f6;">
+                            <h4>Vulnérabilité</h4>
+                            <p style="color: #4b5563; line-height: 1.8; margin: 0;">
+                                <strong>Définition :</strong> Faiblesse dans un système qui peut être exploitée par des pirates.
+                            </p>
+                            <p style="color: #6b7280; line-height: 1.8; margin-top: 0.5rem; margin-bottom: 0; font-style: italic;">
+                                <strong>Exemple :</strong> Un logiciel qui n'a pas été mis à jour peut avoir des failles connues que les pirates peuvent utiliser pour s'introduire.
+                            </p>
+                        </div>
+                        
+                        <div style="background: #f9fafb; padding: 1.25rem; border-radius: 10px; border-left: 4px solid #ef4444;">
+                            <h4>Menace</h4>
+                            <p style="color: #4b5563; line-height: 1.8; margin: 0;">
+                                <strong>Définition :</strong> Potentiel danger pour un système ou des données.
+                            </p>
+                            <p style="color: #6b7280; line-height: 1.8; margin-top: 0.5rem; margin-bottom: 0; font-style: italic;">
+                                <strong>Exemple :</strong> Un virus informatique, un hacker malveillant, ou un email de phishing sont tous des menaces.
+                            </p>
+                        </div>
+                        
+                        <div style="background: #f9fafb; padding: 1.25rem; border-radius: 10px; border-left: 4px solid #f59e0b;">
+                            <h4>Risque</h4>
+                            <p style="color: #4b5563; line-height: 1.8; margin: 0;">
+                                <strong>Définition :</strong> Probabilité qu'une menace exploite une vulnérabilité et cause des dommages.
+                            </p>
+                            <p style="color: #6b7280; line-height: 1.8; margin-top: 0.5rem; margin-bottom: 0; font-style: italic;">
+                                <strong>Exemple :</strong> Si vous utilisez un mot de passe faible (vulnérabilité) et qu'un pirate tente de le deviner (menace), le risque est élevé que votre compte soit compromis.
+                            </p>
+                        </div>
+                        
+                        <div style="background: #f9fafb; padding: 1.25rem; border-radius: 10px; border-left: 4px solid #8b5cf6;">
+                            <h4>Attaque</h4>
+                            <p style="color: #4b5563; line-height: 1.8; margin: 0;">
+                                <strong>Définition :</strong> Action malveillante contre un système pour voler, modifier ou détruire des données.
+                            </p>
+                            <p style="color: #6b7280; line-height: 1.8; margin-top: 0.5rem; margin-bottom: 0; font-style: italic;">
+                                <strong>Exemple :</strong> Un pirate qui envoie un virus par email ou qui tente de voler vos identifiants de connexion.
+                            </p>
+                        </div>
+                        
+                        <div style="background: #f9fafb; padding: 1.25rem; border-radius: 10px; border-left: 4px solid #10b981;">
+                            <h4>Incident de sécurité</h4>
+                            <p style="color: #4b5563; line-height: 1.8; margin: 0;">
+                                <strong>Définition :</strong> Événement qui compromet la sécurité d'un système ou de données.
+                            </p>
+                            <p style="color: #6b7280; line-height: 1.8; margin-top: 0.5rem; margin-bottom: 0; font-style: italic;">
+                                <strong>Exemple :</strong> Un compte piraté, des données volées, ou un système infecté par un virus.
+                            </p>
+                        </div>
+                        
+                        <div style="background: #f9fafb; padding: 1.25rem; border-radius: 10px; border-left: 4px solid #06b6d4;">
+                            <h4>Pare-feu (Firewall)</h4>
+                            <p style="color: #4b5563; line-height: 1.8; margin: 0;">
+                                <strong>Définition :</strong> Système de protection qui filtre le trafic réseau et bloque les connexions suspectes.
+                            </p>
+                            <p style="color: #6b7280; line-height: 1.8; margin-top: 0.5rem; margin-bottom: 0; font-style: italic;">
+                                <strong>Exemple :</strong> Comme un garde de sécurité qui vérifie qui peut entrer dans un bâtiment. Le pare-feu vérifie qui peut accéder à votre réseau.
+                            </p>
+                        </div>
+                        
+                        <div style="background: #f9fafb; padding: 1.25rem; border-radius: 10px; border-left: 4px solid #ec4899;">
+                            <h4>Chiffrement</h4>
+                            <p style="color: #4b5563; line-height: 1.8; margin: 0;">
+                                <strong>Définition :</strong> Processus de codage des données pour qu'elles ne soient lisibles que par les personnes autorisées.
+                            </p>
+                            <p style="color: #6b7280; line-height: 1.8; margin-top: 0.5rem; margin-bottom: 0; font-style: italic;">
+                                <strong>Exemple :</strong> Transformer votre message "Bonjour" en code secret comme "Xy9#mK2p". Seule la personne avec la "clé" peut le décoder.
+                            </p>
+                        </div>
+                        
+                        <div style="background: #f9fafb; padding: 1.25rem; border-radius: 10px; border-left: 4px solid #14b8a6;">
+                            <h4>Authentification</h4>
+                            <p style="color: #4b5563; line-height: 1.8; margin: 0;">
+                                <strong>Définition :</strong> Vérification de l'identité d'une personne ou d'un système.
+                            </p>
+                            <p style="color: #6b7280; line-height: 1.8; margin-top: 0.5rem; margin-bottom: 0; font-style: italic;">
+                                <strong>Exemple :</strong> Quand vous entrez votre nom d'utilisateur et votre mot de passe, vous vous authentifiez - vous prouvez que vous êtes bien qui vous prétendez être.
+                            </p>
+                        </div>
+                        
+                        <div style="background: #f9fafb; padding: 1.25rem; border-radius: 10px; border-left: 4px solid #f97316;">
+                            <h4>Autorisation</h4>
+                            <p style="color: #4b5563; line-height: 1.8; margin: 0;">
+                                <strong>Définition :</strong> Permission d'accès à une ressource ou une fonctionnalité spécifique.
+                            </p>
+                            <p style="color: #6b7280; line-height: 1.8; margin-top: 0.5rem; margin-bottom: 0; font-style: italic;">
+                                <strong>Exemple :</strong> Même après vous être authentifié, vous n'avez peut-être pas le droit d'accéder à tous les fichiers. L'autorisation détermine ce que vous pouvez faire une fois connecté.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <strong style="display: block; margin-bottom: 0.5rem; color: #1e40af;">Astuce :</strong>
+                        <p style="color: #1e3a8a; margin: 0; line-height: 1.8;">
+                            Ne vous inquiétez pas si vous ne retenez pas tous ces termes immédiatement. Vous les rencontrerez régulièrement dans les modules suivants, et ils deviendront progressivement familiers. L'important est de comprendre les concepts, pas de mémoriser chaque définition par cœur.
+                        </p>
+                    </div>
+
+                    <div class="question-section">
+                        <div class="question-title">Répondez aux questions ci-dessous</div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <p style="font-weight: 600; margin-bottom: 0.75rem; color: #1f2937;">Quel terme désigne une faiblesse dans un système qui peut être exploitée ?</p>
+                            <div class="question-input-group">
+                                <input type="text" class="question-input" id="answer-q4" placeholder="Tapez votre réponse ici">
+                                <button class="btn-submit" onclick="submitAnswer('q4', 'Vulnérabilité')">Soumettre</button>
+                            </div>
+                            <div class="answer-feedback" id="feedback-q4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task 5 -->
+            <div class="task-section" id="task-5">
+                <div class="task-header">
+                    <div class="task-number">5</div>
+                    <h2 class="task-title">Bonnes pratiques de base</h2>
+                </div>
+                <div class="task-content">
+                    <p>Maintenant que vous comprenez les bases, voici les bonnes pratiques essentielles que vous pouvez appliquer dès aujourd'hui pour mieux vous protéger. Ces conseils sont simples mais très efficaces !</p>
+                    
+                    <h3>À faire absolument</h3>
+                    
+                    <div style="display: grid; gap: 1.25rem; margin: 2rem 0;">
+                        <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #10b981;">
+                            <h4>Utiliser des mots de passe forts et uniques</h4>
+                            <p style="color: #047857; line-height: 1.8; margin-bottom: 1rem;">
+                                <strong>Pourquoi :</strong> Un mot de passe faible est comme une serrure en plastique - facile à casser !
+                            </p>
+                            <div style="background: white; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                                <p style="color: #065f46; font-weight: 600; margin-bottom: 0.5rem;">Bon mot de passe :</p>
+                                <p style="color: #047857; margin: 0; font-family: monospace; background: #f0fdf4; padding: 0.5rem; border-radius: 4px;">M@Senegal2024!Cybersec</p>
+                                <p style="color: #065f46; font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 0;">Au moins 12 caractères, majuscules, minuscules, chiffres et symboles</p>
+                            </div>
+                            <div style="background: white; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                                <p style="color: #dc2626; font-weight: 600; margin-bottom: 0.5rem;">Mauvais mot de passe :</p>
+                                <p style="color: #991b1b; margin: 0; font-family: monospace; background: #fef2f2; padding: 0.5rem; border-radius: 4px;">password123</p>
+                                <p style="color: #991b1b; font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 0;">Trop simple, facilement devinable</p>
+                            </div>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #3b82f6;">
+                            <h4>Activer l'authentification à deux facteurs (2FA)</h4>
+                            <p style="color: #1e3a8a; line-height: 1.8; margin-bottom: 1rem;">
+                                <strong>Pourquoi :</strong> Même si quelqu'un vole votre mot de passe, il ne pourra pas accéder à votre compte sans votre téléphone.
+                            </p>
+                            <p style="color: #1e3a8a; line-height: 1.8; margin: 0;">
+                                <strong>Comment ça marche :</strong> Après avoir entré votre mot de passe, vous recevez un code sur votre téléphone que vous devez entrer. C'est comme avoir deux clés au lieu d'une pour ouvrir votre porte.
+                            </p>
+                            <p style="color: #1e40af; font-size: 0.95rem; margin-top: 1rem; margin-bottom: 0; font-weight: 600;">
+                                Activez la 2FA sur : Gmail, Facebook, WhatsApp, Orange Money, et tous vos comptes importants !
+                            </p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #f59e0b;">
+                            <h4>Mettre à jour régulièrement les logiciels</h4>
+                            <p style="color: #78350f; line-height: 1.8; margin-bottom: 1rem;">
+                                <strong>Pourquoi :</strong> Les mises à jour corrigent les failles de sécurité découvertes. Ne pas mettre à jour, c'est comme laisser une fenêtre ouverte chez vous.
+                            </p>
+                            <p style="color: #78350f; line-height: 1.8; margin: 0;">
+                                <strong>À mettre à jour :</strong> Votre système d'exploitation (Windows, Android, iOS), vos applications, votre navigateur (Chrome, Firefox), et surtout votre antivirus.
+                            </p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #6366f1;">
+                            <h4>Faire des sauvegardes régulières</h4>
+                            <p style="color: #312e81; line-height: 1.8; margin-bottom: 1rem;">
+                                <strong>Pourquoi :</strong> Si vos données sont volées ou perdues, vous pouvez les restaurer depuis une sauvegarde.
+                            </p>
+                            <p style="color: #312e81; line-height: 1.8; margin: 0;">
+                                <strong>Comment :</strong> Sauvegardez vos fichiers importants sur un disque dur externe, un cloud (Google Drive, iCloud), ou les deux. Faites-le au moins une fois par semaine, ou automatiquement si possible.
+                            </p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #ec4899;">
+                            <h4>Être prudent avec les emails et liens suspects</h4>
+                            <p style="color: #831843; line-height: 1.8; margin-bottom: 1rem;">
+                                <strong>Pourquoi :</strong> Beaucoup d'attaques commencent par un email ou un lien malveillant.
+                            </p>
+                            <p style="color: #831843; line-height: 1.8; margin: 0;">
+                                <strong>Signes d'alerte :</strong> Email d'un expéditeur inconnu, fautes d'orthographe, demande urgente d'action, liens suspects, ou promesses trop belles pour être vraies. <strong>En cas de doute, ne cliquez pas !</strong>
+                            </p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #10b981;">
+                            <h4>Utiliser un antivirus à jour</h4>
+                            <p style="color: #047857; line-height: 1.8; margin-bottom: 1rem;">
+                                <strong>Pourquoi :</strong> Un antivirus détecte et bloque les virus, malwares et autres menaces avant qu'elles n'infectent votre appareil.
+                            </p>
+                            <p style="color: #047857; line-height: 1.8; margin: 0;">
+                                <strong>Recommandations :</strong> Windows Defender (gratuit et intégré), Avast, ou Bitdefender. Assurez-vous qu'il est toujours activé et à jour.
+                            </p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #8b5cf6;">
+                            <h4>Se former continuellement</h4>
+                            <p style="color: #7c3aed; line-height: 1.8; margin: 0;">
+                                <strong>Pourquoi :</strong> Les menaces évoluent constamment. En vous formant régulièrement (comme vous le faites maintenant !), vous restez à jour et mieux protégé.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <h3>À éviter absolument</h3>
+                    
+                    <div style="display: grid; gap: 1.25rem; margin: 2rem 0;">
+                        <div style="background: #fef2f2; padding: 1.25rem; border-radius: 10px; border-left: 4px solid #ef4444;">
+                            <h4>Partager ses mots de passe</h4>
+                            <p style="color: #7f1d1d; line-height: 1.8; margin: 0;">
+                                Même avec des personnes de confiance. Si vous devez partager un accès, utilisez un gestionnaire de mots de passe qui permet le partage sécurisé.
+                            </p>
+                        </div>
+                        
+                        <div style="background: #fef2f2; padding: 1.25rem; border-radius: 10px; border-left: 4px solid #ef4444;">
+                            <h4>Cliquer sur des liens suspects</h4>
+                            <p style="color: #7f1d1d; line-height: 1.8; margin: 0;">
+                                Même s'ils semblent provenir d'une source fiable. Survolez le lien avec votre souris pour voir l'URL réelle avant de cliquer.
+                            </p>
+                        </div>
+                        
+                        <div style="background: #fef2f2; padding: 1.25rem; border-radius: 10px; border-left: 4px solid #ef4444;">
+                            <h4>Télécharger des fichiers de sources inconnues</h4>
+                            <p style="color: #7f1d1d; line-height: 1.8; margin: 0;">
+                                Surtout les fichiers .exe, .zip, ou .pdf provenant d'emails non sollicités. Ils peuvent contenir des virus.
+                            </p>
+                        </div>
+                        
+                        <div style="background: #fef2f2; padding: 1.25rem; border-radius: 10px; border-left: 4px solid #ef4444;">
+                            <h4>Utiliser des réseaux Wi-Fi publics non sécurisés</h4>
+                            <p style="color: #7f1d1d; line-height: 1.8; margin: 0;">
+                                Évitez de faire des transactions bancaires ou d'accéder à des comptes sensibles sur des Wi-Fi publics (cafés, aéroports). Utilisez plutôt vos données mobiles ou un VPN.
+                            </p>
+                        </div>
+                        
+                        <div style="background: #fef2f2; padding: 1.25rem; border-radius: 10px; border-left: 4px solid #ef4444;">
+                            <h4>Ignorer les mises à jour de sécurité</h4>
+                            <p style="color: #7f1d1d; line-height: 1.8; margin: 0;">
+                                Les mises à jour peuvent être ennuyeuses, mais elles sont cruciales. Configurez les mises à jour automatiques quand c'est possible.
+                            </p>
+                        </div>
+                        
+                        <div style="background: #fef2f2; padding: 1.25rem; border-radius: 10px; border-left: 4px solid #ef4444;">
+                            <h4>Ouvrir des pièces jointes non vérifiées</h4>
+                            <p style="color: #7f1d1d; line-height: 1.8; margin: 0;">
+                                Même si l'email semble provenir d'une personne que vous connaissez. Vérifiez toujours avec l'expéditeur avant d'ouvrir une pièce jointe inattendue.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="question-section">
+                        <div class="question-title">Répondez aux questions ci-dessous</div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <p style="font-weight: 600; margin-bottom: 0.75rem; color: #1f2937;">Quelle est la longueur minimale recommandée pour un mot de passe fort ?</p>
+                            <div class="question-input-group">
+                                <input type="text" class="question-input" id="answer-q5" placeholder="Tapez votre réponse ici">
+                                <button class="btn-submit" onclick="submitAnswer('q5', '12 caractères')">Soumettre</button>
+                            </div>
+                            <div class="answer-feedback" id="feedback-q5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="module-navigation">
+                <a href="../cours-introduction-cybersecurite.html" class="btn-nav btn-prev">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    Retour au cours
+                </a>
+                <button onclick="completeModule()" class="btn-nav btn-complete" id="complete-btn">
+                    Marquer comme complété
+                </button>
+                <a href="module-2-menaces.html" class="btn-nav btn-next">
+                    Module suivant
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </section>
@@ -71,9 +921,6 @@
                     <p class="footer-description">
                         Plateforme sénégalaise de formation et sensibilisation en cybersécurité.
                     </p>
-                    <p class="footer-tagline">
-                        Former, Protéger, Renforcer la sécurité numérique au Sénégal.
-                    </p>
                 </div>
                 <div class="footer-col">
                     <h4 class="footer-subtitle">Liens Rapides</h4>
@@ -85,23 +932,6 @@
                         <li><a href="../../contact.html">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4 class="footer-subtitle">Contact</h4>
-                    <ul class="footer-contact">
-                        <li>📧 <a href="mailto:contact@terangasecurity.com">contact@terangasecurity.com</a></li>
-                        <li>📱 <a href="tel:+221777777777">+221 77 777 77 77</a></li>
-                        <li>📍 Dakar, Sénégal</li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4 class="footer-subtitle">Suivez-nous</h4>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Facebook">Facebook</a>
-                        <a href="#" class="social-link" aria-label="Twitter">Twitter</a>
-                        <a href="#" class="social-link" aria-label="LinkedIn">LinkedIn</a>
-                        <a href="#" class="social-link" aria-label="Instagram">Instagram</a>
-                    </div>
-                </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2024 TERANGA SECURITY. Tous droits réservés.</p>
@@ -110,5 +940,112 @@
     </footer>
 
     <script src="../../script.js"></script>
+    <script src="../../dashboard-functions.js"></script>
+    <script>
+        // Track answers
+        const correctAnswers = {
+            'q1': 'Offensive Security',
+            'q2': 'transformation digitale rapide',
+            'q3': 'Sécurité des réseaux',
+            'q4': 'Vulnérabilité',
+            'q5': '12 caractères'
+        };
+        
+        const answeredQuestions = JSON.parse(localStorage.getItem('module1Answers') || '{}');
+        
+        function submitAnswer(questionId, correctAnswer) {
+            const input = document.getElementById(`answer-${questionId}`);
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            const userAnswer = input.value.trim();
+            
+            if (!userAnswer) {
+                alert('Veuillez entrer une réponse');
+                return;
+            }
+            
+            // Normalize answers for comparison
+            const normalizedUser = userAnswer.toLowerCase();
+            const normalizedCorrect = correctAnswer.toLowerCase();
+            
+            if (normalizedUser === normalizedCorrect || normalizedUser.includes(normalizedCorrect) || normalizedCorrect.includes(normalizedUser)) {
+                feedback.className = 'answer-feedback correct';
+                feedback.innerHTML = '<strong>Correct !</strong> Excellente réponse.';
+                feedback.style.display = 'block';
+                answeredQuestions[questionId] = true;
+                input.disabled = true;
+                document.querySelector(`#answer-${questionId}`).nextElementSibling.disabled = true;
+                
+                // Update room progress
+                updateRoomProgress();
+            } else {
+                feedback.className = 'answer-feedback incorrect';
+                feedback.innerHTML = '<strong>Incorrect.</strong> Réessayez. Pensez à la réponse dans le contexte du module.';
+                feedback.style.display = 'block';
+            }
+            
+            localStorage.setItem('module1Answers', JSON.stringify(answeredQuestions));
+        }
+        
+        function updateRoomProgress() {
+            const totalQuestions = Object.keys(correctAnswers).length;
+            const answeredCount = Object.keys(answeredQuestions).filter(q => answeredQuestions[q]).length;
+            const progress = Math.round((answeredCount / totalQuestions) * 100);
+            
+            const progressBar = document.getElementById('room-progress-bar');
+            const progressText = document.getElementById('room-progress-text');
+            
+            if (progressBar && progressText) {
+                progressBar.style.width = progress + '%';
+                progressText.textContent = progress + '%';
+            }
+            
+        }
+        
+        // Restore answered questions
+        Object.keys(answeredQuestions).forEach(qId => {
+            if (answeredQuestions[qId]) {
+                const input = document.getElementById(`answer-${qId}`);
+                const feedback = document.getElementById(`feedback-${qId}`);
+                if (input && feedback) {
+                    input.disabled = true;
+                    feedback.className = 'answer-feedback correct';
+                    feedback.innerHTML = '<strong>Correct !</strong> Excellente réponse.';
+                    feedback.style.display = 'block';
+                    if (input.nextElementSibling) {
+                        input.nextElementSibling.disabled = true;
+                    }
+                }
+            }
+        });
+        
+        // Update progress on load
+        updateRoomProgress();
+        
+
+        // Complete module function
+        function completeModule() {
+            const courseUrl = '/formation/cours-introduction-cybersecurite.html';
+            const moduleNumber = 1;
+            
+            if (typeof completeModule === 'function' && window.completeModule !== completeModule) {
+                if (completeModule(courseUrl, moduleNumber)) {
+                    alert('Module complété avec succès !');
+                    const btn = document.getElementById('complete-btn');
+                    if (btn) {
+                        btn.style.background = '#10b981';
+                        btn.innerHTML = 'Complété';
+                        btn.disabled = true;
+                    }
+                }
+            } else {
+                if (typeof window.completeModule === 'function' && window.completeModule !== completeModule) {
+                    window.completeModule(courseUrl, moduleNumber);
+                }
+                alert('Module complété avec succès !');
+            }
+        }
+
+        window.completeModule = completeModule;
+    </script>
 </body>
 </html>

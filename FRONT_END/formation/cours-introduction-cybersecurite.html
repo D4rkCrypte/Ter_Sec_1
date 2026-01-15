@@ -9,9 +9,197 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .course-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .course-header {
+            background: linear-gradient(135deg, #1f2937 0%,#225bd6 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        .course-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        .course-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+        .course-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .meta-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .room-progress {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .progress-header h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin: 0;
+        }
+        .progress-bar-wrapper {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+        .progress-text {
+            font-size: 0.875rem;
+            color: #6b7280;
+            font-weight: 600;
+        }
+        .tasks-container {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .tasks-header {
+            margin-bottom: 2rem;
+        }
+        .tasks-header h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+        .tasks-header p {
+            color: #6b7280;
+            font-size: 1rem;
+        }
+        .task-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        .task-item:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+        .task-item.completed {
+            background: #f0fdf4;
+            border-color: #10b981;
+        }
+        .task-item.in-progress {
+            background: #eff6ff;
+            border-color: #3b82f6;
+        }
+        .task-number {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .task-item.completed .task-number {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        .task-content {
+            flex: 1;
+        }
+        .task-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+        .task-description {
+            font-size: 0.95rem;
+            color: #6b7280;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .task-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        .task-status.completed {
+            color: #059669;
+        }
+        .task-status.in-progress {
+            color: #2563eb;
+        }
+        .task-status.not-started {
+            color: #6b7280;
+        }
+        .task-arrow {
+            color: #9ca3af;
+            flex-shrink: 0;
+        }
+        .task-item:hover .task-arrow {
+            color: #3b82f6;
+        }
+        @media (max-width: 768px) {
+            .course-header h1 {
+                font-size: 2rem;
+            }
+            .task-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .task-number {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header / Navigation -->
     <header class="header">
         <nav class="navbar">
             <div class="container">
@@ -52,139 +240,127 @@
         </nav>
     </header>
 
-    <!-- Course Content -->
-    <section class="course-page" style="padding: 4rem 0;">
-        <div class="container">
-            <div style="max-width: 900px; margin: 0 auto;">
-                <div style="text-align: center; margin-bottom: 3rem;">
-                    <h1 style="font-size: 2.5rem; font-weight: 800; color: #1f2937; margin-bottom: 1rem;">Introduction à la Cybersécurité</h1>
-                    <p style="font-size: 1.2rem; color: #6b7280; margin-bottom: 1.5rem;">
-                        Découvrez les bases de la cybersécurité : menaces, vulnérabilités, et bonnes pratiques.
-                    </p>
-                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; align-items: center;">
-                        <span style="background: #e0e7ff; color: #3730a3; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600;">🔐 Niveau: Débutant</span>
-                        <span style="background: #dbeafe; color: #1e40af; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600;">⏱️ 20 heures</span>
-                        <span style="background: #dcfce7; color: #166534; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600;">✓ Certification incluse</span>
-                        <div class="share-container" style="position: relative;">
-                            <button class="btn-share" id="share-btn" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 20px; font-size: 0.875rem; font-weight: 600; color: #1f2937; cursor: pointer; transition: all 0.3s ease;">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="18" cy="5" r="3"></circle>
-                                    <circle cx="6" cy="12" r="3"></circle>
-                                    <circle cx="18" cy="19" r="3"></circle>
-                                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-                                </svg>
-                                Partager
-                            </button>
-                            <div class="share-menu" id="share-menu" style="display: none; position: absolute; top: 100%; right: 0; margin-top: 0.5rem; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); padding: 0.5rem; min-width: 200px; z-index: 1000;">
-                                <a href="#" class="share-option" data-share="facebook" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; border-radius: 8px; text-decoration: none; color: #1f2937; transition: all 0.2s ease;">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                                    </svg>
-                                    <span>Facebook</span>
-                                </a>
-                                <a href="#" class="share-option" data-share="twitter" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; border-radius: 8px; text-decoration: none; color: #1f2937; transition: all 0.2s ease;">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
-                                    </svg>
-                                    <span>Twitter</span>
-                                </a>
-                                <a href="#" class="share-option" data-share="linkedin" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; border-radius: 8px; text-decoration: none; color: #1f2937; transition: all 0.2s ease;">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
-                                        <circle cx="4" cy="4" r="2"/>
-                                    </svg>
-                                    <span>LinkedIn</span>
-                                </a>
-                                <a href="#" class="share-option" data-share="whatsapp" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; border-radius: 8px; text-decoration: none; color: #1f2937; transition: all 0.2s ease;">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                                    </svg>
-                                    <span>WhatsApp</span>
-                                </a>
-                                <a href="#" class="share-option" data-share="email" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; border-radius: 8px; text-decoration: none; color: #1f2937; transition: all 0.2s ease;">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                        <polyline points="22,6 12,13 2,6"/>
-                                    </svg>
-                                    <span>Email</span>
-                                </a>
-                                <button class="share-option" data-share="copy" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; border-radius: 8px; border: none; background: none; width: 100%; text-align: left; cursor: pointer; color: #1f2937; transition: all 0.2s ease;">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                                    </svg>
-                                    <span>Copier le lien</span>
-                                </button>
-                            </div>
+    <section class="course-page" style="padding: 2rem 0; background: #f9fafb;">
+        <div class="course-container">
+            <div class="course-header">
+                <h1>Introduction à la Cybersécurité</h1>
+                <p>Découvrez les bases de la cybersécurité : menaces, vulnérabilités, et bonnes pratiques pour protéger vos systèmes et données.</p>
+                <div class="course-meta">
+                    <span class="meta-badge">Niveau: Débutant</span>
+                    <span class="meta-badge">Durée: 20 heures</span>
+                    <span class="meta-badge">Certification incluse</span>
+                </div>
+            </div>
+
+            <div class="room-progress">
+                <div class="progress-header">
+                    <h2>Progression de la formation</h2>
+                    <span class="progress-text" id="overall-progress-text">0%</span>
+                </div>
+                <div class="progress-bar-wrapper">
+                    <div class="progress-bar-fill" id="overall-progress-bar" style="width: 0%"></div>
+                </div>
+                <p class="progress-text" style="margin-top: 0.5rem; margin-bottom: 0;">Pour accéder au contenu, connectez-vous et commencez les modules.</p>
+            </div>
+
+            <div class="tasks-container">
+                <div class="tasks-header">
+                    <h2>Modules de la formation</h2>
+                    <p>Complétez chaque module pour progresser dans votre apprentissage de la cybersécurité.</p>
+                </div>
+
+                <a href="modules/module-1-introduction.html" class="task-item" id="task-1">
+                    <div class="task-number">1</div>
+                    <div class="task-content">
+                        <h3 class="task-title">Module 1 : Introduction à la cybersécurité</h3>
+                        <p class="task-description">Découvrez les concepts fondamentaux de la cybersécurité, son importance dans le monde numérique, et le contexte sénégalais. Apprenez les trois piliers de la cybersécurité (CID) et le vocabulaire essentiel.</p>
+                        <div class="task-status not-started" id="status-1">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                            </svg>
+                            <span>Non commencé</span>
                         </div>
                     </div>
-                </div>
+                    <svg class="task-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"></path>
+                    </svg>
+                </a>
 
-                <div style="background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); margin-bottom: 2rem;">
-                    <h2 style="font-size: 1.75rem; font-weight: 700; color: #1f2937; margin-bottom: 1.5rem;">Modules de la formation</h2>
-                    <div class="modules-list" style="display: flex; flex-direction: column; gap: 1rem;">
-                        <a href="modules/module-1-introduction.html" class="module-card" style="display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; background: #f9fafb; border-radius: 12px; text-decoration: none; transition: all 0.3s ease; border: 2px solid transparent;">
-                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">1</div>
-                            <div style="flex: 1;">
-                                <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">Module 1 : Introduction à la cybersécurité</h3>
-                                <p style="font-size: 0.95rem; color: #6b7280; margin: 0;">Découvrez les concepts fondamentaux de la cybersécurité et son importance dans le monde numérique.</p>
-                            </div>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #9ca3af; flex-shrink: 0;">
-                                <path d="M9 18l6-6-6-6"></path>
+                <a href="modules/module-2-menaces.html" class="task-item" id="task-2">
+                    <div class="task-number">2</div>
+                    <div class="task-content">
+                        <h3 class="task-title">Module 2 : Les principales menaces cybernétiques</h3>
+                        <p class="task-description">Apprenez à identifier et comprendre les différentes menaces qui pèsent sur les systèmes informatiques : malwares, phishing, attaques DDoS, ingénierie sociale, et attaques par force brute.</p>
+                        <div class="task-status not-started" id="status-2">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
                             </svg>
-                        </a>
-                        <a href="modules/module-2-menaces.html" class="module-card" style="display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; background: #f9fafb; border-radius: 12px; text-decoration: none; transition: all 0.3s ease; border: 2px solid transparent;">
-                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">2</div>
-                            <div style="flex: 1;">
-                                <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">Module 2 : Les principales menaces cybernétiques</h3>
-                                <p style="font-size: 0.95rem; color: #6b7280; margin: 0;">Apprenez à identifier et comprendre les différentes menaces qui pèsent sur les systèmes informatiques.</p>
-                            </div>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #9ca3af; flex-shrink: 0;">
-                                <path d="M9 18l6-6-6-6"></path>
-                            </svg>
-                        </a>
-                        <a href="modules/module-3-vulnerabilites.html" class="module-card" style="display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; background: #f9fafb; border-radius: 12px; text-decoration: none; transition: all 0.3s ease; border: 2px solid transparent;">
-                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">3</div>
-                            <div style="flex: 1;">
-                                <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">Module 3 : Vulnérabilités et failles de sécurité</h3>
-                                <p style="font-size: 0.95rem; color: #6b7280; margin: 0;">Comprenez les vulnérabilités courantes et comment les exploiteurs les utilisent.</p>
-                            </div>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #9ca3af; flex-shrink: 0;">
-                                <path d="M9 18l6-6-6-6"></path>
-                            </svg>
-                        </a>
-                        <a href="modules/module-4-bonnes-pratiques.html" class="module-card" style="display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; background: #f9fafb; border-radius: 12px; text-decoration: none; transition: all 0.3s ease; border: 2px solid transparent;">
-                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">4</div>
-                            <div style="flex: 1;">
-                                <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">Module 4 : Bonnes pratiques de sécurité</h3>
-                                <p style="font-size: 0.95rem; color: #6b7280; margin: 0;">Découvrez les meilleures pratiques pour protéger vos systèmes et données.</p>
-                            </div>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #9ca3af; flex-shrink: 0;">
-                                <path d="M9 18l6-6-6-6"></path>
-                            </svg>
-                        </a>
-                        <a href="modules/module-5-certification.html" class="module-card" style="display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; background: #f9fafb; border-radius: 12px; text-decoration: none; transition: all 0.3s ease; border: 2px solid transparent;">
-                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">5</div>
-                            <div style="flex: 1;">
-                                <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">Module 5 : Évaluation et certification</h3>
-                                <p style="font-size: 0.95rem; color: #6b7280; margin: 0;">Testez vos connaissances et obtenez votre certification en cybersécurité.</p>
-                            </div>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #9ca3af; flex-shrink: 0;">
-                                <path d="M9 18l6-6-6-6"></path>
-                            </svg>
-                        </a>
+                            <span>Non commencé</span>
+                        </div>
                     </div>
-                </div>
+                    <svg class="task-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"></path>
+                    </svg>
+                </a>
 
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a href="../formations.html" style="display: inline-block; padding: 0.875rem 2rem; background: #f3f4f6; color: #1f2937; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s ease;">← Retour aux formations</a>
-                </div>
+                <a href="modules/module-3-vulnerabilites.html" class="task-item" id="task-3">
+                    <div class="task-number">3</div>
+                    <div class="task-content">
+                        <h3 class="task-title">Module 3 : Vulnérabilités et failles de sécurité</h3>
+                        <p class="task-description">Comprenez les vulnérabilités courantes dans les systèmes, les applications et les réseaux. Apprenez comment les pirates identifient et exploitent ces failles, et comment les prévenir.</p>
+                        <div class="task-status not-started" id="status-3">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                            </svg>
+                            <span>Non commencé</span>
+                        </div>
+                    </div>
+                    <svg class="task-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"></path>
+                    </svg>
+                </a>
+
+                <a href="modules/module-4-bonnes-pratiques.html" class="task-item" id="task-4">
+                    <div class="task-number">4</div>
+                    <div class="task-content">
+                        <h3 class="task-title">Module 4 : Bonnes pratiques de sécurité</h3>
+                        <p class="task-description">Découvrez les meilleures pratiques pour protéger vos systèmes et données : gestion des mots de passe, authentification à deux facteurs, sauvegardes, mises à jour, et formation des utilisateurs.</p>
+                        <div class="task-status not-started" id="status-4">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                            </svg>
+                            <span>Non commencé</span>
+                        </div>
+                    </div>
+                    <svg class="task-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"></path>
+                    </svg>
+                </a>
+
+                <a href="modules/module-5-certification.html" class="task-item" id="task-5">
+                    <div class="task-number">5</div>
+                    <div class="task-content">
+                        <h3 class="task-title">Module 5 : Évaluation et certification</h3>
+                        <p class="task-description">Testez vos connaissances avec un examen complet couvrant tous les modules. Obtenez votre certification en cybersécurité TERANGA SECURITY après avoir réussi l'évaluation.</p>
+                        <div class="task-status not-started" id="status-5">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                            </svg>
+                            <span>Non commencé</span>
+                        </div>
+                    </div>
+                    <svg class="task-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="../formations.html" style="display: inline-block; padding: 0.875rem 2rem; background: white; color: #1f2937; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s ease; border: 2px solid #e5e7eb;">Retour aux formations</a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -210,9 +386,9 @@
                 <div class="footer-col">
                     <h4 class="footer-subtitle">Contact</h4>
                     <ul class="footer-contact">
-                        <li>📧 <a href="mailto:contact@terangasecurity.com">contact@terangasecurity.com</a></li>
-                        <li>📱 <a href="tel:+221777777777">+221 77 777 77 77</a></li>
-                        <li>📍 Dakar, Sénégal</li>
+                        <li><a href="mailto:contact@terangasecurity.com">contact@terangasecurity.com</a></li>
+                        <li><a href="tel:+221777777777">+221 77 777 77 77</a></li>
+                        <li>Dakar, Sénégal</li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -232,67 +408,77 @@
     </footer>
 
     <script src="../script.js"></script>
-    <style>
-        /* Android-specific module card styles */
-        @media (hover: none) and (pointer: coarse) and (max-width: 1024px) {
-            @supports not (-webkit-touch-callout: none) {
-                .module-card {
-                    flex-direction: column !important;
-                    align-items: center !important;
-                    text-align: center !important;
-                    padding: 1.5rem 1rem !important;
-                    gap: 1rem !important;
-                    min-height: 180px !important;
-                    justify-content: space-between !important;
-                }
-
-                .module-card > div:first-child {
-                    width: 80px !important;
-                    height: 80px !important;
-                    font-size: 2.5rem !important;
-                    margin-bottom: 0 !important;
-                    order: 1 !important;
-                }
-
-                .module-card > div:nth-child(2) {
-                    flex: 1 !important;
-                    width: 100% !important;
-                    display: flex !important;
-                    flex-direction: column !important;
-                    align-items: center !important;
-                    justify-content: flex-end !important;
-                    order: 3 !important;
-                    margin-top: auto !important;
-                }
-
-                .module-card h3 {
-                    font-size: 1rem !important;
-                    margin: 0 !important;
-                    text-align: center !important;
-                    order: 2 !important;
-                    font-weight: 600 !important;
-                    line-height: 1.4 !important;
-                    padding: 0.5rem 0 !important;
-                }
-
-                .module-card p {
-                    display: none !important;
-                }
-
-                .module-card > svg {
-                    display: none !important;
+    <script src="../dashboard-functions.js"></script>
+    <script>
+        // Mettre à jour la progression globale et le statut des modules
+        function updateCourseProgress() {
+            const courseUrl = '/formation/cours-introduction-cybersecurite.html';
+            const startedCourses = JSON.parse(localStorage.getItem('startedCourses') || '[]');
+            const course = startedCourses.find(c => c.url === courseUrl);
+            
+            let overallProgress = 0;
+            const totalModules = 5;
+            
+            if (course) {
+                const completedModules = course.completedModules || [];
+                const visitedModules = course.visitedModules || [];
+                overallProgress = Math.round((completedModules.length / totalModules) * 100);
+                
+                // Mettre à jour le statut de chaque module
+                for (let i = 1; i <= totalModules; i++) {
+                    const taskItem = document.getElementById(`task-${i}`);
+                    const statusDiv = document.getElementById(`status-${i}`);
+                    
+                    if (completedModules.includes(i)) {
+                        taskItem.classList.add('completed');
+                        taskItem.classList.remove('in-progress');
+                        statusDiv.className = 'task-status completed';
+                        statusDiv.innerHTML = `
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            <span>Complété</span>
+                        `;
+                    } else if (visitedModules.includes(i)) {
+                        taskItem.classList.add('in-progress');
+                        taskItem.classList.remove('completed');
+                        statusDiv.className = 'task-status in-progress';
+                        statusDiv.innerHTML = `
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <span>En cours</span>
+                        `;
+                    }
                 }
             }
+            
+            // Mettre à jour la barre de progression globale
+            const progressBar = document.getElementById('overall-progress-bar');
+            const progressText = document.getElementById('overall-progress-text');
+            
+            if (progressBar && progressText) {
+                progressBar.style.width = overallProgress + '%';
+                progressText.textContent = overallProgress + '%';
+            }
         }
-    </style>
-    <script src="../script.js"></script>
-    <script>
-        // Add to history when page loads
+        
+        // Mettre à jour au chargement de la page
         document.addEventListener('DOMContentLoaded', function() {
+            updateCourseProgress();
+            
+            // Écouter les événements de mise à jour de progression
+            window.addEventListener('progressUpdated', function() {
+                updateCourseProgress();
+            });
+            
+            // Ajouter à l'historique si connecté
             const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
             if (isLoggedIn && typeof addToHistory === 'function') {
                 const title = document.querySelector('h1')?.textContent || 'Formation';
-                const description = document.querySelector('p')?.textContent || '';
+                const description = document.querySelector('.course-header p')?.textContent || '';
                 addToHistory(title, window.location.pathname, 'formation', description);
             }
         });

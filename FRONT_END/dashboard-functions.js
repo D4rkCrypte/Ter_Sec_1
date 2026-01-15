@@ -50,8 +50,248 @@ function updateCourseProgress(courseUrl, progress) {
     let startedCourses = JSON.parse(localStorage.getItem('startedCourses') || '[]');
     const courseIndex = startedCourses.findIndex(c => c.url === courseUrl);
     if (courseIndex !== -1) {
-        startedCourses[courseIndex].progress = progress;
+        startedCourses[courseIndex].progress = Math.min(100, Math.max(0, progress)); // Limiter entre 0 et 100
+        startedCourses[courseIndex].lastAccess = new Date().toISOString();
         localStorage.setItem('startedCourses', JSON.stringify(startedCourses));
+        
+        // Déclencher un événement personnalisé pour mettre à jour l'affichage
+        window.dispatchEvent(new CustomEvent('progressUpdated', {
+            detail: { courseUrl, progress: startedCourses[courseIndex].progress }
+        }));
+    }
+}
+
+// Track module visit - Suivre la visite d'un module
+function trackModuleVisit(courseUrl, moduleNumber) {
+    let startedCourses = JSON.parse(localStorage.getItem('startedCourses') || '[]');
+    const courseIndex = startedCourses.findIndex(c => c.url === courseUrl);
+    
+    if (courseIndex !== -1) {
+        const course = startedCourses[courseIndex];
+        
+        // Initialiser les propriétés si elles n'existent pas
+        if (!course.completedModules) course.completedModules = [];
+        if (!course.visitedModules) course.visitedModules = [];
+        if (!course.timeSpent) course.timeSpent = 0;
+        
+        // Ajouter le module aux modules visités (sans doublon)
+        if (!course.visitedModules.includes(moduleNumber)) {
+            course.visitedModules.push(moduleNumber);
+        }
+        
+        // Mettre à jour le module actuel
+        course.currentModule = moduleNumber;
+        course.lastAccess = new Date().toISOString();
+        
+        // Recalculer la progression basée sur les modules visités
+        // Supposons 5 modules par cours (à adapter selon le nombre réel)
+        const totalModules = 5;
+        const progress = Math.round((course.visitedModules.length / totalModules) * 100);
+        course.progress = Math.min(100, progress);
+        
+        localStorage.setItem('startedCourses', JSON.stringify(startedCourses));
+        
+        // Déclencher l'événement de mise à jour
+        window.dispatchEvent(new CustomEvent('progressUpdated', {
+            detail: { courseUrl, progress: course.progress }
+        }));
+    }
+}
+
+// Complete module - Marquer un module comme complété
+function completeModule(courseUrl, moduleNumber) {
+    let startedCourses = JSON.parse(localStorage.getItem('startedCourses') || '[]');
+    const courseIndex = startedCourses.findIndex(c => c.url === courseUrl);
+    
+    if (courseIndex !== -1) {
+        const course = startedCourses[courseIndex];
+        
+        // Initialiser les propriétés si elles n'existent pas
+        if (!course.completedModules) course.completedModules = [];
+        if (!course.visitedModules) course.visitedModules = [];
+        
+        // Ajouter le module aux modules complétés (sans doublon)
+        if (!course.completedModules.includes(moduleNumber)) {
+            course.completedModules.push(moduleNumber);
+            
+            // Ajouter une notification
+            addNotification(`Module ${moduleNumber} complété ! 🎉`, 'success', courseUrl);
+        }
+        
+        // Recalculer la progression basée sur les modules complétés
+        const totalModules = 5; // À adapter selon le nombre réel de modules
+        const progress = Math.round((course.completedModules.length / totalModules) * 100);
+        course.progress = Math.min(100, progress);
+        course.lastAccess = new Date().toISOString();
+        
+        localStorage.setItem('startedCourses', JSON.stringify(startedCourses));
+        
+        // Déclencher l'événement de mise à jour
+        window.dispatchEvent(new CustomEvent('progressUpdated', {
+            detail: { courseUrl, progress: course.progress }
+        }));
+        
+        return true;
+    }
+    return false;
+}
+
+// Get course progress - Récupérer la progression d'un cours
+function getCourseProgress(courseUrl) {
+    const startedCourses = JSON.parse(localStorage.getItem('startedCourses') || '[]');
+    const course = startedCourses.find(c => c.url === courseUrl);
+    
+    if (course) {
+        return {
+            progress: course.progress || 0,
+            completedModules: course.completedModules || [],
+            visitedModules: course.visitedModules || [],
+            currentModule: course.currentModule || 1,
+            startDate: course.startDate,
+            lastAccess: course.lastAccess,
+            timeSpent: course.timeSpent || 0
+        };
+    }
+    return null;
+}
+
+// Calculate overall progress - Calculer la progression globale
+function calculateOverallProgress() {
+    const startedCourses = JSON.parse(localStorage.getItem('startedCourses') || '[]');
+    
+    if (startedCourses.length === 0) {
+        return {
+            totalCourses: 0,
+            averageProgress: 0,
+            totalTimeSpent: 0,
+            completedCourses: 0
+        };
+    }
+    
+    const totalProgress = startedCourses.reduce((sum, course) => sum + (course.progress || 0), 0);
+    const averageProgress = Math.round(totalProgress / startedCourses.length);
+    const totalTimeSpent = startedCourses.reduce((sum, course) => sum + (course.timeSpent || 0), 0);
+    const completedCourses = startedCourses.filter(course => course.progress >= 100).length;
+    
+    return {
+        totalCourses: startedCourses.length,
+        averageProgress: averageProgress,
+        totalTimeSpent: totalTimeSpent,
+        completedCourses: completedCourses
+    };
+}
+
+// Track time spent - Suivre le temps passé sur une page
+let timeTrackingInterval = null;
+let pageStartTime = null;
+
+function startTimeTracking(courseUrl) {
+    if (timeTrackingInterval) {
+        clearInterval(timeTrackingInterval);
+    }
+    
+    pageStartTime = Date.now();
+    
+    // Mettre à jour toutes les 30 secondes
+    timeTrackingInterval = setInterval(() => {
+        if (pageStartTime) {
+            const timeSpent = Math.floor((Date.now() - pageStartTime) / 1000); // en secondes
+            
+            let startedCourses = JSON.parse(localStorage.getItem('startedCourses') || '[]');
+            const courseIndex = startedCourses.findIndex(c => c.url === courseUrl);
+            
+            if (courseIndex !== -1) {
+                startedCourses[courseIndex].timeSpent = (startedCourses[courseIndex].timeSpent || 0) + 30;
+                localStorage.setItem('startedCourses', JSON.stringify(startedCourses));
+                pageStartTime = Date.now(); // Réinitialiser pour le prochain intervalle
+            }
+        }
+    }, 30000); // 30 secondes
+}
+
+function stopTimeTracking() {
+    if (timeTrackingInterval) {
+        clearInterval(timeTrackingInterval);
+        timeTrackingInterval = null;
+    }
+    pageStartTime = null;
+}
+
+// Auto-detect course URL from current page - Détecter automatiquement l'URL du cours
+function detectCourseUrl() {
+    const currentPath = window.location.pathname;
+    
+    // Si on est sur une page de module, extraire l'URL du cours parent
+    if (currentPath.includes('/modules/')) {
+        // Extraire le nom du cours depuis le chemin
+        const pathParts = currentPath.split('/');
+        const moduleFile = pathParts[pathParts.length - 1];
+        
+        // Mapper les modules aux cours
+        const moduleToCourse = {
+            'module-1-introduction.html': '/formation/cours-introduction-cybersecurite.html',
+            'module-2-menaces.html': '/formation/cours-introduction-cybersecurite.html',
+            'module-3-vulnerabilites.html': '/formation/cours-introduction-cybersecurite.html',
+            'module-4-bonnes-pratiques.html': '/formation/cours-introduction-cybersecurite.html',
+            'module-5-certification.html': '/formation/cours-introduction-cybersecurite.html',
+            // Ajouter d'autres mappings selon les besoins
+        };
+        
+        // Chercher dans les patterns
+        for (const [module, course] of Object.entries(moduleToCourse)) {
+            if (moduleFile.includes(module.replace('.html', ''))) {
+                return course;
+            }
+        }
+        
+        // Pattern générique : si le nom du module contient un nom de cours
+        if (moduleFile.includes('introduction')) {
+            return '/formation/cours-introduction-cybersecurite.html';
+        } else if (moduleFile.includes('phishing')) {
+            return '/formation/cours-phishing.html';
+        } else if (moduleFile.includes('hacking')) {
+            return '/formation/cours-ethical-hacking.html';
+        } else if (moduleFile.includes('reseaux')) {
+            return '/formation/cours-securite-reseaux.html';
+        } else if (moduleFile.includes('web')) {
+            return '/formation/cours-securite-web.html';
+        } else if (moduleFile.includes('mobile')) {
+            return '/formation/cours-securite-mobile.html';
+        } else if (moduleFile.includes('cloud')) {
+            return '/formation/cours-securite-cloud.html';
+        } else if (moduleFile.includes('sensibilisation')) {
+            return '/formation/cours-sensibilisation.html';
+        } else if (moduleFile.includes('gestion-identites')) {
+            return '/formation/cours-gestion-identites.html';
+        }
+    }
+    
+    // Si on est directement sur une page de cours
+    if (currentPath.includes('/formation/cours-')) {
+        return currentPath;
+    }
+    
+    return null;
+}
+
+// Auto-track progress on page load - Suivi automatique au chargement de la page
+function autoTrackProgress() {
+    const courseUrl = detectCourseUrl();
+    
+    if (courseUrl) {
+        // Extraire le numéro du module depuis l'URL
+        const moduleMatch = window.location.pathname.match(/module-(\d+)/);
+        const moduleNumber = moduleMatch ? parseInt(moduleMatch[1]) : 1;
+        
+        // Démarrer le suivi du temps
+        startTimeTracking(courseUrl);
+        
+        // Enregistrer la visite du module
+        trackModuleVisit(courseUrl, moduleNumber);
+        
+        // Arrêter le suivi quand on quitte la page
+        window.addEventListener('beforeunload', stopTimeTracking);
+        window.addEventListener('pagehide', stopTimeTracking);
     }
 }
 
@@ -182,12 +422,31 @@ function changeTheme(theme) {
     }
 }
 
+// Track login history for streak calculation
+function trackLogin() {
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+        let loginHistory = JSON.parse(localStorage.getItem('loginHistory') || '[]');
+        const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
+        
+        // Add today if not already present
+        if (!loginHistory.includes(today)) {
+            loginHistory.push(today);
+            // Keep only last 90 days
+            loginHistory = loginHistory.slice(-90);
+            localStorage.setItem('loginHistory', JSON.stringify(loginHistory));
+        }
+    }
+}
+
 // Initialize theme and language on page load
 document.addEventListener('DOMContentLoaded', function() {
     const savedTheme = localStorage.getItem('theme') || 'light';
     const savedLang = localStorage.getItem('language') || 'fr';
     changeTheme(savedTheme);
     changeLanguage(savedLang);
+    
+    // Track login
+    trackLogin();
     
     // Rotate motivational message every 5 minutes
     setInterval(rotateMotivationalMessage, 5 * 60 * 1000);
