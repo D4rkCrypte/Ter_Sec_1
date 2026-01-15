@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Identités et Accès - TERANGA SECURITY</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="../index.html">TERANGA SECURITY</a>
+                    </div>
+                    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="nav-menu">
+                        <li><a href="../index.html" class="nav-link">Accueil</a></li>
+                        <li><a href="../a-propos.html" class="nav-link">À propos</a></li>
+                        <li><a href="../formations.html" class="nav-link">Formations</a></li>
+                        <li><a href="../articles.html" class="nav-link">Articles</a></li>
+                        <li><a href="../contact.html" class="nav-link">Contact</a></li>
+                        <li id="auth-menu-item">
+                            <a href="../login.html" class="nav-link btn-login" id="login-btn">Se connecter</a>
+                            <div class="user-profile-menu" id="user-profile" style="display: none;">
+                                <button class="user-profile-btn" id="profile-toggle">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </button>
+                                <div class="profile-dropdown" id="profile-dropdown">
+                                    <a href="../dashboard/dashboard.html" class="profile-link">Tableau de bord</a>
+                                    <a href="../formations.html" class="profile-link">Mes formations</a>
+                                    <a href="#" class="profile-link" id="logout-btn">Déconnexion</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-page" style="padding: 4rem 0;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h1 style="font-size: 2.5rem; font-weight: 800; color: #1f2937; margin-bottom: 1rem;">Gestion des Identités et Accès</h1>
+                    <p style="font-size: 1.2rem; color: #6b7280; margin-bottom: 1.5rem;">
+                        Apprenez à gérer les identités, authentification, autorisation et contrôle d'accès dans les systèmes informatiques.
+                    </p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <span style="background: #e0e7ff; color: #3730a3; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600;">🔑 Niveau: Intermédiaire</span>
+                        <span style="background: #dbeafe; color: #1e40af; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600;">⏱️ 30 heures</span>
+                        <span style="background: #dcfce7; color: #166534; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600;">✓ Certification incluse</span>
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); margin-bottom: 2rem;">
+                    <h2 style="font-size: 1.75rem; font-weight: 700; color: #1f2937; margin-bottom: 1.5rem;">Modules de la formation</h2>
+                    <div class="modules-list" style="display: flex; flex-direction: column; gap: 1rem;">
+                        <a href="modules/gestion-identites-module-1.html" class="module-card" style="display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; background: #f9fafb; border-radius: 12px; text-decoration: none; transition: all 0.3s ease; border: 2px solid transparent;">
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">1</div>
+                            <div style="flex: 1;">
+                                <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">Module 1 : Introduction à l'IAM</h3>
+                                <p style="font-size: 0.95rem; color: #6b7280; margin: 0;">Découvrez les concepts fondamentaux de la gestion des identités et des accès (IAM).</p>
+                            </div>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #9ca3af; flex-shrink: 0;">
+                                <path d="M9 18l6-6-6-6"></path>
+                            </svg>
+                        </a>
+                        <a href="modules/gestion-identites-module-2.html" class="module-card" style="display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; background: #f9fafb; border-radius: 12px; text-decoration: none; transition: all 0.3s ease; border: 2px solid transparent;">
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">2</div>
+                            <div style="flex: 1;">
+                                <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">Module 2 : Authentification et autorisation</h3>
+                                <p style="font-size: 0.95rem; color: #6b7280; margin: 0;">Maîtrisez les mécanismes d'authentification et d'autorisation des utilisateurs.</p>
+                            </div>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #9ca3af; flex-shrink: 0;">
+                                <path d="M9 18l6-6-6-6"></path>
+                            </svg>
+                        </a>
+                        <a href="modules/gestion-identites-module-3.html" class="module-card" style="display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; background: #f9fafb; border-radius: 12px; text-decoration: none; transition: all 0.3s ease; border: 2px solid transparent;">
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">3</div>
+                            <div style="flex: 1;">
+                                <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">Module 3 : SSO et fédération d'identités</h3>
+                                <p style="font-size: 0.95rem; color: #6b7280; margin: 0;">Apprenez à implémenter le Single Sign-On (SSO) et la fédération d'identités.</p>
+                            </div>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #9ca3af; flex-shrink: 0;">
+                                <path d="M9 18l6-6-6-6"></path>
+                            </svg>
+                        </a>
+                        <a href="modules/gestion-identites-module-4.html" class="module-card" style="display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; background: #f9fafb; border-radius: 12px; text-decoration: none; transition: all 0.3s ease; border: 2px solid transparent;">
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">4</div>
+                            <div style="flex: 1;">
+                                <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">Module 4 : Gestion des rôles et permissions</h3>
+                                <p style="font-size: 0.95rem; color: #6b7280; margin: 0;">Découvrez les modèles de contrôle d'accès basés sur les rôles (RBAC).</p>
+                            </div>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #9ca3af; flex-shrink: 0;">
+                                <path d="M9 18l6-6-6-6"></path>
+                            </svg>
+                        </a>
+                        <a href="modules/gestion-identites-module-5.html" class="module-card" style="display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; background: #f9fafb; border-radius: 12px; text-decoration: none; transition: all 0.3s ease; border: 2px solid transparent;">
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">5</div>
+                            <div style="flex: 1;">
+                                <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">Module 5 : Audit et conformité IAM</h3>
+                                <p style="font-size: 0.95rem; color: #6b7280; margin: 0;">Apprenez à auditer et assurer la conformité des systèmes IAM.</p>
+                            </div>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #9ca3af; flex-shrink: 0;">
+                                <path d="M9 18l6-6-6-6"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="../formations.html" style="display: inline-block; padding: 0.875rem 2rem; background: #f3f4f6; color: #1f2937; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s ease;">← Retour aux formations</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-title">TERANGA SECURITY</h3>
+                    <p class="footer-description">
+                        Plateforme sénégalaise de formation et sensibilisation en cybersécurité.
+                    </p>
+                    <p class="footer-tagline">
+                        Former, Protéger, Renforcer la sécurité numérique au Sénégal.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Liens Rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Accueil</a></li>
+                        <li><a href="../formations.html">Formations</a></li>
+                        <li><a href="../a-propos.html">À propos</a></li>
+                        <li><a href="../articles.html">Articles</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Contact</h4>
+                    <ul class="footer-contact">
+                        <li>📧 <a href="mailto:contact@terangasecurity.com">contact@terangasecurity.com</a></li>
+                        <li>📱 <a href="tel:+221777777777">+221 77 777 77 77</a></li>
+                        <li>📍 Dakar, Sénégal</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Suivez-nous</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">Facebook</a>
+                        <a href="#" class="social-link" aria-label="Twitter">Twitter</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" class="social-link" aria-label="Instagram">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TERANGA SECURITY. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <style>
+        .module-card:hover {
+            background: #f3f4f6 !important;
+            border-color: #3b82f6 !important;
+            transform: translateX(5px);
+        }
+
+        /* Android-specific module card styles */
+        @media (hover: none) and (pointer: coarse) and (max-width: 1024px) {
+            @supports not (-webkit-touch-callout: none) {
+                .module-card {
+                    flex-direction: column !important;
+                    align-items: center !important;
+                    text-align: center !important;
+                    padding: 1.5rem 1rem !important;
+                    gap: 1rem !important;
+                    min-height: 180px !important;
+                    justify-content: space-between !important;
+                }
+
+                .module-card > div:first-child {
+                    width: 80px !important;
+                    height: 80px !important;
+                    font-size: 2.5rem !important;
+                    margin-bottom: 0 !important;
+                    order: 1 !important;
+                }
+
+                .module-card > div:nth-child(2) {
+                    flex: 1 !important;
+                    width: 100% !important;
+                    display: flex !important;
+                    flex-direction: column !important;
+                    align-items: center !important;
+                    justify-content: flex-end !important;
+                    order: 3 !important;
+                    margin-top: auto !important;
+                }
+
+                .module-card h3 {
+                    font-size: 1rem !important;
+                    margin: 0 !important;
+                    text-align: center !important;
+                    order: 2 !important;
+                    font-weight: 600 !important;
+                    line-height: 1.4 !important;
+                    padding: 0.5rem 0 !important;
+                }
+
+                .module-card p {
+                    display: none !important;
+                }
+
+                .module-card > svg {
+                    display: none !important;
+                }
+            }
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles - TERANGA SECURITY</title>
+    <meta name="description" content="Découvrez nos articles sur la cybersécurité et les dernières actualités.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="index.html">TERANGA SECURITY</a>
+                    </div>
+                    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Accueil</a></li>
+                        <li><a href="a-propos.html" class="nav-link">À propos</a></li>
+                        <li><a href="formations.html" class="nav-link">Formations</a></li>
+                        <li><a href="articles.html" class="nav-link active">Articles</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                        <li id="auth-menu-item">
+                            <a href="login.html" class="nav-link btn-login" id="login-btn">Se connecter</a>
+                            <div class="user-profile-menu" id="user-profile" style="display: none;">
+                                <button class="user-profile-btn" id="profile-toggle">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </button>
+                                <div class="profile-dropdown" id="profile-dropdown">
+                                    <a href="dashboard/dashboard.html" class="profile-link">Tableau de bord</a>
+                                    <a href="formations.html" class="profile-link">Mes formations</a>
+                                    <a href="#" class="profile-link" id="logout-btn">Déconnexion</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="index.html">Accueil</a></li>
+                <li aria-current="page">Articles</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Articles & Actualités</h1>
+            <p>Restez informé des dernières tendances en cybersécurité</p>
+        </div>
+    </section>
+
+    <!-- Articles Section with Filters -->
+    <section class="articles-section">
+        <div class="container">
+            <!-- Filters -->
+            <div class="filters-container" id="articles-filters">
+                <div class="filters-header">
+                    <h2>Filtrer les articles</h2>
+                    <button class="btn-reset-filters" data-reset-filters>Réinitialiser</button>
+                </div>
+                <div class="filters-row">
+                    <div class="filter-group">
+                        <label>Catégorie</label>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter-category="all">Toutes</button>
+                            <button class="filter-btn" data-filter-category="Sécurité">Sécurité</button>
+                            <button class="filter-btn" data-filter-category="Formation">Formation</button>
+                            <button class="filter-btn" data-filter-category="Actualité">Actualité</button>
+                            <button class="filter-btn" data-filter-category="Technique">Technique</button>
+                            <button class="filter-btn" data-filter-category="Cas d'étude">Cas d'étude</button>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label>Date</label>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter-date="all">Toutes</button>
+                            <button class="filter-btn" data-filter-date="week">Cette semaine</button>
+                            <button class="filter-btn" data-filter-date="month">Ce mois</button>
+                            <button class="filter-btn" data-filter-date="year">Cette année</button>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label>Trier par</label>
+                        <select class="filter-select" data-sort>
+                            <option value="date-desc">Plus récent</option>
+                            <option value="date-asc">Plus ancien</option>
+                            <option value="name-asc">Titre (A-Z)</option>
+                            <option value="name-desc">Titre (Z-A)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="results-count">12 articles disponibles</div>
+            </div>
+
+            <div class="articles-grid" id="articles-grid">
+                <!-- Article 1 -->
+                <article class="article-card" data-category="Sécurité" data-date="2024-01-15" data-name="Les 10 meilleures pratiques de cybersécurité pour les PME sénégalaises">
+                    <button class="btn-favorite" data-favorite-type="articles" data-favorite-id="article-1-meilleures-pratiques-pme" aria-label="Ajouter aux favoris" aria-pressed="false">
+                        <span class="favorite-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="article-image" style="background-image: url('istockphoto-2176941825-612x612.jpg');">
+                        <div class="article-category">Sécurité</div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-date">15 Janvier 2024</span>
+                        <h3>Les 10 meilleures pratiques de cybersécurité pour les PME sénégalaises</h3>
+                        <p>
+                            Découvrez comment protéger votre entreprise contre les cybermenaces 
+                            avec ces pratiques essentielles adaptées au contexte sénégalais.
+                        </p>
+                        <button class="btn-article" onclick="readArticle(this)">Lire l'article</button>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="article-card" data-category="Formation" data-date="2024-01-10" data-name="Comment démarrer une carrière en cybersécurité au Sénégal">
+                    <div class="article-image" style="background-image: url('istockphoto-2183644691-612x612.jpg');">
+                        <div class="article-category">Formation</div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-date">10 Janvier 2024</span>
+                        <h3>Comment démarrer une carrière en cybersécurité au Sénégal</h3>
+                        <p>
+                            Guide complet pour débuter dans la cybersécurité : formations, 
+                            certifications et opportunités au Sénégal.
+                        </p>
+                        <button class="btn-article" onclick="readArticle(this)">Lire l'article</button>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="article-card" data-category="Actualité" data-date="2024-01-05" data-name="Les nouvelles menaces cybernétiques en 2024">
+                    <div class="article-image" style="background-image: url('istockphoto-1415610253-612x612.jpg');">
+                        <div class="article-category">Actualité</div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-date">5 Janvier 2024</span>
+                        <h3>Les nouvelles menaces cybernétiques en 2024</h3>
+                        <p>
+                            Analyse des principales menaces cybernétiques émergentes en 2024 
+                            et comment s'en protéger efficacement.
+                        </p>
+                        <button class="btn-article" onclick="readArticle(this)">Lire l'article</button>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="article-card" data-category="Sécurité" data-date="2023-12-28" data-name="Protection des données personnelles au Sénégal : Guide pratique">
+                    <div class="article-image" style="background-image: url('istockphoto-1426520374-612x612.jpg');">
+                        <div class="article-category">Sécurité</div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-date">28 Décembre 2023</span>
+                        <h3>Protection des données personnelles au Sénégal : Guide pratique</h3>
+                        <p>
+                            Comprendre la réglementation sur la protection des données personnelles 
+                            et les obligations pour les entreprises sénégalaises.
+                        </p>
+                        <button class="btn-article" onclick="readArticle(this)">Lire l'article</button>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="article-card" data-category="Technique" data-date="2023-12-20" data-name="Sécuriser son réseau Wi-Fi : Guide étape par étape">
+                    <div class="article-image" style="background-image: url('istockphoto-2175262106-612x612.jpg');">
+                        <div class="article-category">Technique</div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-date">20 Décembre 2023</span>
+                        <h3>Sécuriser son réseau Wi-Fi : Guide étape par étape</h3>
+                        <p>
+                            Tutoriel pratique pour sécuriser votre réseau Wi-Fi domestique 
+                            ou professionnel contre les intrusions.
+                        </p>
+                        <button class="btn-article" onclick="readArticle(this)">Lire l'article</button>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="article-card" data-category="Cas d'étude" data-date="2023-12-15" data-name="Étude de cas : Comment une PME sénégalaise a renforcé sa sécurité">
+                    <div class="article-image">
+                        <div class="article-category">Cas d'étude</div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-date">15 Décembre 2023</span>
+                        <h3>Étude de cas : Comment une PME sénégalaise a renforcé sa sécurité</h3>
+                        <p>
+                            Retour d'expérience sur la transformation de la sécurité informatique 
+                            d'une entreprise sénégalaise de taille moyenne.
+                        </p>
+                        <button class="btn-article" onclick="readArticle(this)">Lire l'article</button>
+                    </div>
+                </article>
+
+                <!-- Article 7 -->
+                <article class="article-card" data-category="Actualité" data-date="2023-12-10" data-name="Les tendances de la cybersécurité en Afrique de l'Ouest en 2024">
+                    <div class="article-image" style="background-image: url('istockphoto-2164330836-612x612.jpg');">
+                        <div class="article-category">Actualité</div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-date">10 Décembre 2023</span>
+                        <h3>Les tendances de la cybersécurité en Afrique de l'Ouest en 2024</h3>
+                        <p>
+                            Analyse des principales tendances et défis en cybersécurité 
+                            pour les pays d'Afrique de l'Ouest cette année.
+                        </p>
+                        <button class="btn-article" onclick="readArticle(this)">Lire l'article</button>
+                    </div>
+                </article>
+
+                <!-- Article 8 -->
+                <article class="article-card" data-category="Formation" data-date="2023-12-05" data-name="Certifications en cybersécurité : lesquelles choisir ?">
+                    <div class="article-image" style="background-image: url('istockphoto-2176941820-612x612.jpg');">
+                        <div class="article-category">Formation</div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-date">5 Décembre 2023</span>
+                        <h3>Certifications en cybersécurité : lesquelles choisir ?</h3>
+                        <p>
+                            Guide complet des certifications en cybersécurité reconnues 
+                            internationalement et adaptées au marché sénégalais.
+                        </p>
+                        <button class="btn-article" onclick="readArticle(this)">Lire l'article</button>
+                    </div>
+                </article>
+
+                <!-- Article 9 -->
+                <article class="article-card" data-category="Sécurité" data-date="2023-12-01" data-name="Phishing et arnaques en ligne : comment s'en protéger">
+                    <div class="article-image" style="background-image: url('istockphoto-2153383852-1024x1024.jpg');">
+                        <div class="article-category">Sécurité</div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-date">1 Décembre 2023</span>
+                        <h3>Phishing et arnaques en ligne : comment s'en protéger</h3>
+                        <p>
+                            Conseils pratiques pour identifier et éviter les tentatives 
+                            de phishing et autres arnaques en ligne courantes.
+                        </p>
+                        <button class="btn-article" onclick="readArticle(this)">Lire l'article</button>
+                    </div>
+                </article>
+
+                <!-- Article 10 -->
+                <article class="article-card" data-category="Technique" data-date="2023-11-25" data-name="Chiffrement des données : bases et bonnes pratiques">
+                    <div class="article-image" style="background-image: url('istockphoto-2176941825-612x612.jpg');">
+                        <div class="article-category">Technique</div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-date">25 Novembre 2023</span>
+                        <h3>Chiffrement des données : bases et bonnes pratiques</h3>
+                        <p>
+                            Introduction au chiffrement des données et aux meilleures 
+                            pratiques pour protéger vos informations sensibles.
+                        </p>
+                        <button class="btn-article" onclick="readArticle(this)">Lire l'article</button>
+                    </div>
+                </article>
+
+                <!-- Article 11 -->
+                <article class="article-card" data-category="Formation" data-date="2023-11-20" data-name="Les compétences essentielles d'un expert en cybersécurité">
+                    <div class="article-image" style="background-image: url('istockphoto-2183644691-612x612.jpg');">
+                        <div class="article-category">Formation</div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-date">20 Novembre 2023</span>
+                        <h3>Les compétences essentielles d'un expert en cybersécurité</h3>
+                        <p>
+                            Découvrez les compétences techniques et soft skills nécessaires 
+                            pour réussir dans le domaine de la cybersécurité.
+                        </p>
+                        <button class="btn-article" onclick="readArticle(this)">Lire l'article</button>
+                    </div>
+                </article>
+
+                <!-- Article 12 -->
+                <article class="article-card" data-category="Actualité" data-date="2023-11-15" data-name="Cybersécurité et transformation digitale au Sénégal">
+                    <div class="article-image" style="background-image: url('istockphoto-1415610253-612x612.jpg');">
+                        <div class="article-category">Actualité</div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-date">15 Novembre 2023</span>
+                        <h3>Cybersécurité et transformation digitale au Sénégal</h3>
+                        <p>
+                            Enjeux et opportunités de la cybersécurité dans le contexte 
+                            de la transformation digitale du Sénégal.
+                        </p>
+                        <button class="btn-article" onclick="readArticle(this)">Lire l'article</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Connexion Requise</h2>
+            <p>Vous devez vous connecter ou créer un compte pour lire cet article.</p>
+            <div class="modal-buttons">
+                <a href="login.html" class="btn-modal btn-primary">Se connecter</a>
+                <a href="inscription.html" class="btn-modal btn-secondary">Créer un compte</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-title">TERANGA SECURITY</h3>
+                    <p class="footer-description">
+                        Plateforme sénégalaise de formation et sensibilisation en cybersécurité.
+                    </p>
+                    <p class="footer-tagline">
+                        Former, Protéger, Renforcer la sécurité numérique au Sénégal.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Liens Rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="formations.html">Formations</a></li>
+                        <li><a href="a-propos.html">À propos</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Contact</h4>
+                    <ul class="footer-contact">
+                        <li>📧 <a href="mailto:contact@terangasecurity.com">contact@terangasecurity.com</a></li>
+                        <li>📱 <a href="tel:+221777777777">+221 77 777 77 77</a></li>
+                        <li>📍 Dakar, Sénégal</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Suivez-nous</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">Facebook</a>
+                        <a href="#" class="social-link" aria-label="Twitter">Twitter</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" class="social-link" aria-label="Instagram">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TERANGA SECURITY. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/favorites.js"></script>
+    <script src="js/share.js"></script>
+    <script src="js/notifications.js"></script>
+    <script>
+        // Initialize filters for articles
+        document.addEventListener('DOMContentLoaded', () => {
+            const filtersSystem = new FiltersSystem('articles-filters', '.article-card');
+            
+            // Add favorite buttons to all articles dynamically
+            const articleIds = [
+                'article-1-meilleures-pratiques-pme',
+                'article-2-carriere-cybersecurite',
+                'article-3-menaces-cybernetiques-2024',
+                'article-4-protection-donnees-senegal',
+                'article-5-securiser-wifi',
+                'article-6-etude-cas-pme',
+                'article-7-tendances-afrique-ouest',
+                'article-8-certifications-cybersecurite',
+                'article-9-phishing-arnaque-ligne',
+                'article-10-chiffrement-donnees',
+                'article-11-competences-expert-cybersecurite',
+                'article-12-cybersecurite-transformation-digitale'
+            ];
+            
+            document.querySelectorAll('.article-card').forEach((card, index) => {
+                if (index < articleIds.length) {
+                    const id = articleIds[index];
+                    const existingBtn = card.querySelector('.btn-favorite');
+                    if (!existingBtn) {
+                        const favoriteBtn = favoritesSystem.createFavoriteButton('articles', id, card.querySelector('h3')?.textContent || '');
+                        card.appendChild(favoriteBtn);
+                    }
+                }
+            });
+        });
+    </script>
+    <style>
+        /* Android-specific article card styles */
+        @media (hover: none) and (pointer: coarse) and (max-width: 1024px) {
+            @supports not (-webkit-touch-callout: none) {
+                .article-card {
+                    flex-direction: column !important;
+                    align-items: center !important;
+                    text-align: center !important;
+                    padding: 0 !important;
+                    min-height: 220px !important;
+                    justify-content: space-between !important;
+                    cursor: pointer !important;
+                    position: relative !important;
+                }
+
+                .article-image {
+                    width: 100% !important;
+                    height: 120px !important;
+                    flex-shrink: 0 !important;
+                    order: 1 !important;
+                }
+
+                .article-category {
+                    font-size: 0.7rem !important;
+                    padding: 0.25rem 0.6rem !important;
+                }
+
+                .article-content {
+                    padding: 1rem !important;
+                    flex: 1 !important;
+                    width: 100% !important;
+                    display: flex !important;
+                    flex-direction: column !important;
+                    align-items: center !important;
+                    justify-content: space-between !important;
+                    order: 2 !important;
+                }
+
+                .article-date {
+                    display: none !important;
+                }
+
+                .article-content h3 {
+                    font-size: 1rem !important;
+                    margin: 0 0 1rem 0 !important;
+                    text-align: center !important;
+                    font-weight: 700 !important;
+                    line-height: 1.4 !important;
+                    color: #1f2937 !important;
+                    order: 1 !important;
+                }
+
+                .article-content p {
+                    display: none !important;
+                }
+
+                .btn-article {
+                    width: 100% !important;
+                    padding: 0.875rem 1.5rem !important;
+                    font-size: 0.9rem !important;
+                    font-weight: 600 !important;
+                    border-radius: 10px !important;
+                    margin-top: auto !important;
+                    order: 2 !important;
+                    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+                    color: white !important;
+                    border: none !important;
+                    cursor: pointer !important;
+                    transition: all 0.3s ease !important;
+                    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3) !important;
+                }
+
+                .btn-article:active {
+                    transform: scale(0.98) !important;
+                    box-shadow: 0 1px 4px rgba(59, 130, 246, 0.4) !important;
+                }
+
+                .article-card:active {
+                    transform: scale(0.98) !important;
+                }
+            }
+        }
+    </style>
+    <script>
+        function requireLogin() {
+            document.getElementById('loginModal').style.display = 'block';
+        }
+
+        document.querySelector('.close-modal').addEventListener('click', function() {
+            document.getElementById('loginModal').style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('loginModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Make article cards clickable on Android
+        document.addEventListener('DOMContentLoaded', function() {
+            const articleCards = document.querySelectorAll('.article-card');
+            articleCards.forEach(function(card) {
+                // Check if Android device
+                const isAndroid = /android/i.test(navigator.userAgent);
+                const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+                
+                if ((isAndroid || isTouchDevice) && window.innerWidth <= 1024) {
+                    const button = card.querySelector('.btn-article');
+                    if (button) {
+                        // Make entire card clickable
+                        card.addEventListener('click', function(e) {
+                            // Don't trigger if clicking the button directly
+                            if (e.target !== button && !button.contains(e.target)) {
+                                button.click();
+                            }
+                        });
+                        
+                        // Add visual feedback
+                        card.style.cursor = 'pointer';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

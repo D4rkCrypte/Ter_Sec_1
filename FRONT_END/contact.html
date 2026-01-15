@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - TERANGA SECURITY</title>
+    <meta name="description" content="Contactez TERANGA SECURITY pour vos questions sur nos formations et services.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="index.html">TERANGA SECURITY</a>
+                    </div>
+                    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Accueil</a></li>
+                        <li><a href="a-propos.html" class="nav-link">À propos</a></li>
+                        <li><a href="formations.html" class="nav-link">Formations</a></li>
+                        <li><a href="articles.html" class="nav-link">Articles</a></li>
+                        <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                        <li id="auth-menu-item">
+                            <a href="login.html" class="nav-link btn-login" id="login-btn">Se connecter</a>
+                            <div class="user-profile-menu" id="user-profile" style="display: none;">
+                                <button class="user-profile-btn" id="profile-toggle">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </button>
+                                <div class="profile-dropdown" id="profile-dropdown">
+                                    <a href="dashboard/dashboard.html" class="profile-link">Tableau de bord</a>
+                                    <a href="formations.html" class="profile-link">Mes formations</a>
+                                    <a href="#" class="profile-link" id="logout-btn">Déconnexion</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Contactez-nous</h1>
+            <p>Nous sommes là pour répondre à vos questions</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h2>Informations de Contact</h2>
+                    <p class="contact-description">
+                        N'hésitez pas à nous contacter pour toute question concernant nos formations, 
+                        services ou partenariats. Notre équipe est à votre disposition.
+                    </p>
+
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <h3>Email</h3>
+                                <a href="mailto:contact@terangasecurity.com">contact@terangasecurity.com</a>
+                                <a href="mailto:formation@terangasecurity.com">formation@terangasecurity.com</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-details">
+                                <h3>Téléphone</h3>
+                                <a href="tel:+221777777777">+221 77 777 77 77</a>
+                                <p>Lun - Ven: 8h00 - 18h00</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-details">
+                                <h3>Adresse</h3>
+                                <p>Dakar, Sénégal</p>
+                                <p>BP 12345 Dakar</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contactForm">
+                        <h2>Envoyez-nous un message</h2>
+                        
+                        <div class="form-group">
+                            <label for="name">Nom complet *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Sujet *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Sélectionnez un sujet</option>
+                                <option value="formation">Question sur les formations</option>
+                                <option value="partenariat">Partenariat</option>
+                                <option value="support">Support technique</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-title">TERANGA SECURITY</h3>
+                    <p class="footer-description">
+                        Plateforme sénégalaise de formation et sensibilisation en cybersécurité.
+                    </p>
+                    <p class="footer-tagline">
+                        Former, Protéger, Renforcer la sécurité numérique au Sénégal.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Liens Rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="formations.html">Formations</a></li>
+                        <li><a href="a-propos.html">À propos</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Contact</h4>
+                    <ul class="footer-contact">
+                        <li>📧 <a href="mailto:contact@terangasecurity.com">contact@terangasecurity.com</a></li>
+                        <li>📱 <a href="tel:+221777777777">+221 77 777 77 77</a></li>
+                        <li>📍 Dakar, Sénégal</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Suivez-nous</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">Facebook</a>
+                        <a href="#" class="social-link" aria-label="Twitter">Twitter</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" class="social-link" aria-label="Instagram">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TERANGA SECURITY. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/validation.js"></script>
+    <script>
+        // Contact form validation
+        const contactForm = document.getElementById('contactForm');
+        const contactRules = {
+            name: VALIDATION_RULES.name,
+            email: VALIDATION_RULES.email,
+            subject: VALIDATION_RULES.subject,
+            message: VALIDATION_RULES.message
+        };
+
+        // Initialize real-time validation
+        if (contactForm) {
+            initRealTimeValidation(contactForm, contactRules);
+
+            // Form submission
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate form
+                if (validateForm(contactForm, contactRules)) {
+                    // Disable submit button
+                    const submitBtn = contactForm.querySelector('.btn-submit');
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Envoi en cours...';
+
+                    // Simulate form submission
+                    setTimeout(() => {
+                        toast.success('Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.');
+                        contactForm.reset();
+                        
+                        // Remove validation states
+                        contactForm.querySelectorAll('.valid, .invalid').forEach(field => {
+                            field.classList.remove('valid', 'invalid');
+                        });
+                        contactForm.querySelectorAll('.error-message, .field-icon').forEach(el => {
+                            el.remove();
+                        });
+
+                        // Re-enable submit button
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Envoyer le message';
+                    }, 1500);
+                } else {
+                    toast.error('Veuillez corriger les erreurs dans le formulaire.');
+                    // Focus first invalid field
+                    const firstInvalid = contactForm.querySelector('.invalid');
+                    if (firstInvalid) {
+                        firstInvalid.focus();
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

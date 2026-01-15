@@ -1,0 +1,19 @@
+# robots.txt for TERANGA SECURITY
+# https://terangasecurity.com/robots.txt
+
+User-agent: *
+Allow: /
+
+# Disallow dashboard and admin areas
+Disallow: /dashboard/
+Disallow: /formation/modules/
+
+# Allow important pages
+Allow: /index.html
+Allow: /formations.html
+Allow: /articles.html
+Allow: /a-propos.html
+Allow: /contact.html
+
+# Sitemap
+Sitemap: https://terangasecurity.com/sitemap.xml

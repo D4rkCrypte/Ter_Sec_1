@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formations - TERANGA SECURITY</title>
+    <meta name="description" content="Découvrez nos formations en cybersécurité adaptées au contexte sénégalais.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="index.html">TERANGA SECURITY</a>
+                    </div>
+                    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Accueil</a></li>
+                        <li><a href="a-propos.html" class="nav-link">À propos</a></li>
+                        <li><a href="formations.html" class="nav-link active">Formations</a></li>
+                        <li><a href="articles.html" class="nav-link">Articles</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                        <li id="auth-menu-item">
+                            <a href="login.html" class="nav-link btn-login" id="login-btn">Se connecter</a>
+                            <div class="user-profile-menu" id="user-profile" style="display: none;">
+                                <button class="user-profile-btn" id="profile-toggle">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </button>
+                                <div class="profile-dropdown" id="profile-dropdown">
+                                    <a href="dashboard/dashboard.html" class="profile-link">Tableau de bord</a>
+                                    <a href="formations.html" class="profile-link">Mes formations</a>
+                                    <a href="#" class="profile-link" id="logout-btn">Déconnexion</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="index.html">Accueil</a></li>
+                <li aria-current="page">Formations</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Nos Formations en Cybersécurité</h1>
+            <p>Des programmes complets adaptés au contexte sénégalais</p>
+        </div>
+    </section>
+
+    <!-- Formations Section with Filters -->
+    <section class="formations-section">
+        <div class="container">
+            <!-- Filters -->
+            <div class="filters-container" id="formations-filters">
+                <div class="filters-header">
+                    <h2>Filtrer les formations</h2>
+                    <button class="btn-reset-filters" data-reset-filters>Réinitialiser</button>
+                </div>
+                <div class="filters-row">
+                    <div class="filter-group">
+                        <label>Niveau</label>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter-level="all">Tous</button>
+                            <button class="filter-btn" data-filter-level="debutant">Débutant</button>
+                            <button class="filter-btn" data-filter-level="intermediaire">Intermédiaire</button>
+                            <button class="filter-btn" data-filter-level="avance">Avancé</button>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label>Durée</label>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter-duration="all">Toutes</button>
+                            <button class="filter-btn" data-filter-duration="1-5">1-5 heures</button>
+                            <button class="filter-btn" data-filter-duration="5-10">5-10 heures</button>
+                            <button class="filter-btn" data-filter-duration="10+">10+ heures</button>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label>Trier par</label>
+                        <select class="filter-select" data-sort>
+                            <option value="popularity">Popularité</option>
+                            <option value="name-asc">Nom (A-Z)</option>
+                            <option value="name-desc">Nom (Z-A)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="results-count">9 formations disponibles</div>
+            </div>
+
+            <div class="formations-grid" id="formations-grid">
+                <!-- Formation 1 -->
+                <div class="formation-card clickable" onclick="goToCourse('formation/cours-introduction-cybersecurite.html')" data-category="introduction" data-level="debutant" data-duration="20" data-name="Introduction à la Cybersécurité" data-popularity="95">
+                    <div class="formation-badge">Niveau: Débutant</div>
+                    <div class="formation-icon">🔐</div>
+                    <h3>Introduction à la Cybersécurité</h3>
+                    <p class="formation-description">
+                        Découvrez les bases de la cybersécurité : menaces, vulnérabilités, et bonnes pratiques. 
+                        Parfait pour débuter dans le domaine.
+                    </p>
+                    <ul class="formation-features">
+                        <li>✓ 20 heures de contenu</li>
+                        <li>✓ Certification incluse</li>
+                        <li>✓ Support en français</li>
+                        <li>✓ Accès à vie</li>
+                    </ul>
+                    <div class="formation-footer">
+                        <button class="btn-formation" onclick="event.stopPropagation(); goToCourse('cours-introduction-cybersecurite.html')">Commencer</button>
+                        <button class="btn-favorite" data-favorite-type="formations" data-favorite-id="cours-introduction-cybersecurite" aria-label="Ajouter aux favoris" aria-pressed="false">
+                            <span class="favorite-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Formation 2 -->
+                <div class="formation-card clickable" onclick="goToCourse('formation/cours-securite-reseaux.html')" data-category="reseaux" data-level="intermediaire" data-duration="40" data-name="Sécurité des Réseaux" data-popularity="88">
+                    <div class="formation-badge">Niveau: Intermédiaire</div>
+                    <div class="formation-icon">🛡️</div>
+                    <h3>Sécurité des Réseaux</h3>
+                    <p class="formation-description">
+                        Apprenez à sécuriser les réseaux informatiques : firewall, VPN, IDS/IPS, 
+                        et protection contre les attaques réseau.
+                    </p>
+                    <ul class="formation-features">
+                        <li>✓ 40 heures de contenu</li>
+                        <li>✓ Certification incluse</li>
+                        <li>✓ Lab pratiques</li>
+                        <li>✓ Support expert</li>
+                    </ul>
+                    <div class="formation-footer">
+                        <button class="btn-formation" onclick="event.stopPropagation(); goToCourse('cours-securite-reseaux.html')">Commencer</button>
+                        <button class="btn-favorite" data-favorite-type="formations" data-favorite-id="cours-securite-reseaux" aria-label="Ajouter aux favoris" aria-pressed="false">
+                            <span class="favorite-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Formation 3 -->
+                <div class="formation-card featured clickable" onclick="goToCourse('formation/cours-ethical-hacking.html')" data-category="hacking" data-level="avance" data-duration="60" data-name="Ethical Hacking & Penetration Testing" data-popularity="92">
+                    <div class="formation-badge">Niveau: Avancé</div>
+                    <div class="formation-icon">🔒</div>
+                    <h3>Ethical Hacking & Penetration Testing</h3>
+                    <p class="formation-description">
+                        Maîtrisez les techniques d'ethical hacking et de penetration testing. 
+                        Formation complète avec lab environnement.
+                    </p>
+                    <ul class="formation-features">
+                        <li>✓ 60 heures de contenu</li>
+                        <li>✓ Certification professionnelle</li>
+                        <li>✓ Lab avancés</li>
+                        <li>✓ Mentorat personnalisé</li>
+                    </ul>
+                    <div class="formation-footer">
+                        <button class="btn-formation" onclick="event.stopPropagation(); goToCourse('cours-ethical-hacking.html')">Commencer</button>
+                        <button class="btn-favorite" data-favorite-type="formations" data-favorite-id="cours-ethical-hacking" aria-label="Ajouter aux favoris" aria-pressed="false">
+                            <span class="favorite-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Formation 4 -->
+                <div class="formation-card clickable" onclick="goToCourse('formation/cours-gestion-identites.html')" data-category="identites" data-level="intermediaire" data-duration="30" data-name="Gestion des Identités et Accès" data-popularity="85">
+                    <div class="formation-badge">Niveau: Intermédiaire</div>
+                    <div class="formation-icon">🔑</div>
+                    <h3>Gestion des Identités et Accès</h3>
+                    <p class="formation-description">
+                        Apprenez à gérer les identités, authentification, autorisation et 
+                        contrôle d'accès dans les systèmes informatiques.
+                    </p>
+                    <ul class="formation-features">
+                        <li>✓ 30 heures de contenu</li>
+                        <li>✓ Certification incluse</li>
+                        <li>✓ Cas pratiques</li>
+                        <li>✓ Support communautaire</li>
+                    </ul>
+                    <div class="formation-footer">
+                        <button class="btn-formation" onclick="event.stopPropagation(); goToCourse('cours-gestion-identites.html')">Commencer</button>
+                        <button class="btn-favorite" data-favorite-type="formations" data-favorite-id="cours-gestion-identites" aria-label="Ajouter aux favoris" aria-pressed="false">
+                            <span class="favorite-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Formation 5 -->
+                <div class="formation-card clickable" onclick="goToCourse('formation/cours-securite-mobile.html')" data-category="mobile" data-level="debutant" data-duration="25" data-name="Sécurité Mobile" data-popularity="80">
+                    <div class="formation-badge">Niveau: Débutant</div>
+                    <div class="formation-icon">📱</div>
+                    <h3>Sécurité Mobile</h3>
+                    <p class="formation-description">
+                        Protégez les appareils mobiles contre les menaces : Android, iOS, 
+                        applications malveillantes et bonnes pratiques.
+                    </p>
+                    <ul class="formation-features">
+                        <li>✓ 25 heures de contenu</li>
+                        <li>✓ Certification incluse</li>
+                        <li>✓ Démonstrations pratiques</li>
+                        <li>✓ Mises à jour régulières</li>
+                    </ul>
+                    <div class="formation-footer">
+                        <button class="btn-formation" onclick="event.stopPropagation(); goToCourse('cours-securite-mobile.html')">Commencer</button>
+                        <button class="btn-favorite" data-favorite-type="formations" data-favorite-id="cours-securite-mobile" aria-label="Ajouter aux favoris" aria-pressed="false">
+                            <span class="favorite-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Formation 6 -->
+                <div class="formation-card clickable" onclick="goToCourse('formation/cours-securite-cloud.html')" data-category="cloud" data-level="avance" data-duration="50" data-name="Sécurité Cloud" data-popularity="90">
+                    <div class="formation-badge">Niveau: Avancé</div>
+                    <div class="formation-icon">🌐</div>
+                    <h3>Sécurité Cloud</h3>
+                    <p class="formation-description">
+                        Sécurisez les infrastructures cloud : AWS, Azure, GCP, 
+                        et meilleures pratiques de sécurité cloud.
+                    </p>
+                    <ul class="formation-features">
+                        <li>✓ 50 heures de contenu</li>
+                        <li>✓ Certification incluse</li>
+                        <li>✓ Hands-on labs</li>
+                        <li>✓ Préparation certification</li>
+                    </ul>
+                    <div class="formation-footer">
+                        <button class="btn-formation" onclick="event.stopPropagation(); goToCourse('cours-securite-cloud.html')">Commencer</button>
+                        <button class="btn-favorite" data-favorite-type="formations" data-favorite-id="cours-securite-cloud" aria-label="Ajouter aux favoris" aria-pressed="false">
+                            <span class="favorite-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Formation 7 - Phishing -->
+                <div class="formation-card clickable" onclick="goToCourse('formation/cours-phishing.html')" data-category="phishing" data-level="debutant" data-duration="15" data-name="Détection et Prévention du Phishing" data-popularity="82">
+                    <div class="formation-badge">Niveau: Débutant</div>
+                    <div class="formation-icon">🎣</div>
+                    <h3>Détection et Prévention du Phishing</h3>
+                    <p class="formation-description">
+                        Apprenez à identifier les attaques de phishing et à protéger 
+                        votre organisation contre ces menaces courantes.
+                    </p>
+                    <ul class="formation-features">
+                        <li>✓ 15 heures de contenu</li>
+                        <li>✓ Certification incluse</li>
+                        <li>✓ Cas réels analysés</li>
+                        <li>✓ Exercices pratiques</li>
+                    </ul>
+                    <div class="formation-footer">
+                        <button class="btn-formation" onclick="event.stopPropagation(); goToCourse('cours-phishing.html')">Commencer</button>
+                        <button class="btn-favorite" data-favorite-type="formations" data-favorite-id="cours-phishing" aria-label="Ajouter aux favoris" aria-pressed="false">
+                            <span class="favorite-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Formation 8 - Web -->
+                <div class="formation-card clickable" onclick="goToCourse('formation/cours-securite-web.html')" data-category="web" data-level="intermediaire" data-duration="35" data-name="Sécurité Web et Applications" data-popularity="87">
+                    <div class="formation-badge">Niveau: Intermédiaire</div>
+                    <div class="formation-icon">🌍</div>
+                    <h3>Sécurité Web et Applications</h3>
+                    <p class="formation-description">
+                        Maîtrisez la sécurisation des applications web : OWASP Top 10, 
+                        injections SQL, XSS, et bonnes pratiques de développement.
+                    </p>
+                    <ul class="formation-features">
+                        <li>✓ 35 heures de contenu</li>
+                        <li>✓ Certification incluse</li>
+                        <li>✓ Lab sécurisés</li>
+                        <li>✓ Code review</li>
+                    </ul>
+                    <div class="formation-footer">
+                        <button class="btn-formation" onclick="event.stopPropagation(); goToCourse('cours-securite-web.html')">Commencer</button>
+                        <button class="btn-favorite" data-favorite-type="formations" data-favorite-id="cours-securite-web" aria-label="Ajouter aux favoris" aria-pressed="false">
+                            <span class="favorite-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Formation 9 - Sensibilisation -->
+                <div class="formation-card clickable" onclick="goToCourse('formation/cours-sensibilisation.html')" data-category="sensibilisation" data-level="debutant" data-duration="12" data-name="Sensibilisation à la Cybersécurité" data-popularity="75">
+                    <div class="formation-badge">Niveau: Débutant</div>
+                    <div class="formation-icon">📢</div>
+                    <h3>Sensibilisation à la Cybersécurité</h3>
+                    <p class="formation-description">
+                        Programme de sensibilisation aux bonnes pratiques de cybersécurité 
+                        pour tous les employés et utilisateurs.
+                    </p>
+                    <ul class="formation-features">
+                        <li>✓ 12 heures de contenu</li>
+                        <li>✓ Certification incluse</li>
+                        <li>✓ Scénarios interactifs</li>
+                        <li>✓ Quiz d'évaluation</li>
+                    </ul>
+                    <div class="formation-footer">
+                        <button class="btn-formation" onclick="event.stopPropagation(); goToCourse('cours-sensibilisation.html')">Commencer</button>
+                        <button class="btn-favorite" data-favorite-type="formations" data-favorite-id="cours-sensibilisation" aria-label="Ajouter aux favoris" aria-pressed="false">
+                            <span class="favorite-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Connexion Requise</h2>
+            <p>Vous devez vous connecter ou créer un compte pour accéder à cette formation.</p>
+            <div class="modal-buttons">
+                <a href="login.html" class="btn-modal btn-primary">Se connecter</a>
+                <a href="inscription.html" class="btn-modal btn-secondary">Créer un compte</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-title">TERANGA SECURITY</h3>
+                    <p class="footer-description">
+                        Plateforme sénégalaise de formation et sensibilisation en cybersécurité.
+                    </p>
+                    <p class="footer-tagline">
+                        Former, Protéger, Renforcer la sécurité numérique au Sénégal.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Liens Rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="formations.html">Formations</a></li>
+                        <li><a href="a-propos.html">À propos</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Contact</h4>
+                    <ul class="footer-contact">
+                        <li>📧 <a href="mailto:contact@terangasecurity.com">contact@terangasecurity.com</a></li>
+                        <li>📱 <a href="tel:+221777777777">+221 77 777 77 77</a></li>
+                        <li>📍 Dakar, Sénégal</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Suivez-nous</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">Facebook</a>
+                        <a href="#" class="social-link" aria-label="Twitter">Twitter</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" class="social-link" aria-label="Instagram">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TERANGA SECURITY. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/favorites.js"></script>
+    <script src="js/notifications.js"></script>
+    <script>
+        // Initialize filters for formations
+        document.addEventListener('DOMContentLoaded', () => {
+            const filtersSystem = new FiltersSystem('formations-filters', '.formation-card');
+            
+            // Initialize favorite buttons
+            document.querySelectorAll('.btn-favorite').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const type = btn.getAttribute('data-favorite-type');
+                    const id = btn.getAttribute('data-favorite-id');
+                    favoritesSystem.toggleFavorite(type, id);
+                });
+            });
+        });
+    </script>
+    <script>
+        function requireLogin() {
+            document.getElementById('loginModal').style.display = 'block';
+        }
+
+        document.querySelector('.close-modal').addEventListener('click', function() {
+            document.getElementById('loginModal').style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('loginModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

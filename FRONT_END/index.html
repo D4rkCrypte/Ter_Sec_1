@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERANGA SECURITY - Former et protéger les jeunes Sénégalais</title>
+    <meta name="description" content="Plateforme sénégalaise de formation et sensibilisation en cybersécurité. Former, Protéger, Renforcer la sécurité numérique au Sénégal.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://terangasecurity.com/">
+    <meta property="og:title" content="TERANGA SECURITY - Former et protéger les jeunes Sénégalais">
+    <meta property="og:description" content="Plateforme sénégalaise de formation et sensibilisation en cybersécurité. Former, Protéger, Renforcer la sécurité numérique au Sénégal.">
+    <meta property="og:image" content="https://terangasecurity.com/istockphoto-2204151722-612x612.jpg">
+    <meta property="og:site_name" content="TERANGA SECURITY">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://terangasecurity.com/">
+    <meta name="twitter:title" content="TERANGA SECURITY - Former et protéger les jeunes Sénégalais">
+    <meta name="twitter:description" content="Plateforme sénégalaise de formation et sensibilisation en cybersécurité. Former, Protéger, Renforcer la sécurité numérique au Sénégal.">
+    <meta name="twitter:image" content="https://terangasecurity.com/istockphoto-2204151722-612x612.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://terangasecurity.com/">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="index.html">TERANGA SECURITY</a>
+                    </div>
+                    <button class="mobile-menu-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="nav-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <div class="header-search" id="header-search">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" id="global-search-input" placeholder="Rechercher formations, articles..." autocomplete="off">
+                        <div class="search-suggestions" id="search-suggestions"></div>
+                    </div>
+                    <ul class="nav-menu" id="nav-menu" role="menubar">
+                        <li role="none"><a href="index.html" class="nav-link" role="menuitem" aria-current="page">Accueil</a></li>
+                        <li role="none"><a href="a-propos.html" class="nav-link" role="menuitem">À propos</a></li>
+                        <li role="none"><a href="formations.html" class="nav-link" role="menuitem">Formations</a></li>
+                        <li role="none"><a href="articles.html" class="nav-link" role="menuitem">Articles</a></li>
+                        <li role="none"><a href="contact.html" class="nav-link" role="menuitem">Contact</a></li>
+                        <li id="auth-menu-item">
+                            <a href="login.html" class="nav-link btn-login" id="login-btn">Se connecter</a>
+                            <div class="user-profile-menu" id="user-profile" style="display: none;">
+                                <button class="user-profile-btn" id="profile-toggle" aria-label="Menu utilisateur" aria-expanded="false" aria-haspopup="true" aria-controls="profile-dropdown">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </button>
+                                <div class="profile-dropdown" id="profile-dropdown" role="menu" aria-labelledby="profile-toggle">
+                                    <a href="dashboard/dashboard.html" class="profile-link" role="menuitem">Tableau de bord</a>
+                                    <a href="formations.html" class="profile-link" role="menuitem">Mes formations</a>
+                                    <a href="#" class="profile-link" id="logout-btn" role="menuitem">Déconnexion</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <main id="main-content">
+    <section id="accueil" class="hero" role="banner">
+        <div class="hero-overlay"></div>
+        <div class="binary-background"></div>
+        <div class="particles"></div>
+        <div class="hero-container">
+            <div class="hero-content-left">
+                <h1 class="hero-title">
+                    TERANGA<br>
+                    <span class="title-line-2">SECURITY</span>
+                </h1>
+                <p class="hero-description">
+                    Former et protéger les jeunes Sénégalais à l'ère du numérique. 
+                    Plateforme sénégalaise de formation et sensibilisation en cybersécurité. 
+                    Accompagnement des PME et ONG sénégalaises dans leur transformation digitale sécurisée.
+                </p>
+                <a href="login.html" class="btn-hero" id="btn-hero-connect" style="display: none;">Se connecter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notre mission Section
+    <section id="a-propos" class="mission-section">
+        <div class="container">
+            <h2 class="section-title">Notre mission</h2>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="mission-icon">🎯</div>
+                    <h3>Formation en cybersécurité pour tous</h3>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">📢</div>
+                    <h3>Sensibilisation à la sécurité numérique au Sénégal</h3>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">🤝</div>
+                    <h3>Accompagnement des PME et ONG sénégalaises</h3>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Nos Piliers Section -->
+    <!-- <section id="formations" class="piliers-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nos Piliers</h2>
+                <p class="section-subtitle">
+                    Trois axes stratégiques pour bâtir un Sénégal numérique sûr et résilient
+                </p>
+            </div>
+            <div class="piliers-grid">
+                <div class="pilier-card">
+                    <div class="pilier-icon">🎓</div>
+                    <h3>Formation</h3>
+                    <p>
+                        Des programmes de formation complets et certifiants en cybersécurité, 
+                        adaptés au contexte sénégalais et aux besoins du marché local.
+                    </p>
+                </div>
+                <div class="pilier-card">
+                    <div class="pilier-icon">🛡️</div>
+                    <h3>Sensibilisation</h3>
+                    <p>
+                        Campagnes de sensibilisation et ateliers pratiques pour éduquer les entreprises, 
+                        institutions et particuliers aux bonnes pratiques de sécurité.
+                    </p>
+                </div>
+                <div class="pilier-card">
+                    <div class="pilier-icon">🔒</div>
+                    <h3>Protection</h3>
+                    <p>
+                        Conseils et solutions pour protéger vos systèmes, données et infrastructures 
+                        contre les menaces cybernétiques actuelles.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Pourquoi nous choisir Section -->
+    <!-- <section class="why-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Pourquoi nous choisir ?</h2>
+                <p class="section-subtitle">
+                    Des raisons concrètes de faire confiance à TERANGA SECURITY
+                </p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">🌍</div>
+                    <h4>Expertise Sénégalaise</h4>
+                    <p>Une équipe d'experts sénégalais qui comprend les défis spécifiques du pays</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">📚</div>
+                    <h4>Contenu Adapté</h4>
+                    <p>Formations et ressources conçues pour le contexte sénégalais</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🤝</div>
+                    <h4>Accompagnement</h4>
+                    <p>Suivi personnalisé tout au long de votre parcours de formation</p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    
+    <!-- Communauté Section -->
+    <!-- <section class="community-section">
+        <div class="container">
+            <div class="community-content">
+                <h2 class="section-title">Communauté Sénégalaise</h2>
+                <p class="community-description">
+                    Rejoignez une communauté dynamique de professionnels et passionnés de cybersécurité 
+                    à travers tout le Sénégal. Ensemble, nous bâtissons un avenir numérique plus sûr pour le pays.
+                </p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">5000+</div>
+                        <div class="stat-label">Apprenants actifs</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">14</div>
+                        <div class="stat-label">Régions du Sénégal</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Formations disponibles</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Footer -->
+    <!-- <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-title">TERANGA SECURITY</h3>
+                    <p class="footer-description">
+                        Plateforme sénégalaise de formation et sensibilisation en cybersécurité.
+                    </p>
+                    <p class="footer-tagline">
+                        Former, Protéger, Renforcer la sécurité numérique au Sénégal.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Liens Rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="formations.html">Formations</a></li>
+                        <li><a href="a-propos.html">À propos</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Contact</h4>
+                    <ul class="footer-contact">
+                        <li>📧 <a href="mailto:contact@terangasecurity.com">contact@terangasecurity.com</a></li>
+                        <li>📱 <a href="tel:+221777777777">+221 77 777 77 77</a></li>
+                        <li>📍 Dakar, Sénégal</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Suivez-nous</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">Facebook</a>
+                        <a href="#" class="social-link" aria-label="Twitter">Twitter</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" class="social-link" aria-label="Instagram">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TERANGA SECURITY. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer> -->
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" style="display: none; position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border: none; border-radius: 50%; color: white; font-size: 1.5rem; cursor: pointer; z-index: 1000; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); transition: all 0.3s ease;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin: auto; display: block;">
+            <path d="M18 15l-6-6-6 6"></path>
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/chat-widget.js"></script>
+</body>
+</html>

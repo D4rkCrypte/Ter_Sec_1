@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - TERANGA SECURITY</title>
+    <meta name="description" content="Connectez-vous à votre compte TERANGA SECURITY">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="auth-page">
+    <!-- Header / Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="index.html">TERANGA SECURITY</a>
+                    </div>
+                    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Accueil</a></li>
+                        <li><a href="a-propos.html" class="nav-link">À propos</a></li>
+                        <li><a href="formations.html" class="nav-link">Formations</a></li>
+                        <li><a href="articles.html" class="nav-link">Articles</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                        <li><a href="login.html" class="nav-link btn-login active">Se connecter</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Login Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <h1>Connexion</h1>
+                        <p>Connectez-vous à votre compte TERANGA SECURITY</p>
+                    </div>
+
+                    <form class="auth-form" id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">Email *</label>
+                            <input type="email" id="loginEmail" name="email" placeholder="votre@email.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loginPassword">Mot de passe *</label>
+                            <input type="password" id="loginPassword" name="password" placeholder="••••••••" required>
+                            <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="remember">
+                                <span>Se souvenir de moi</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn-auth">Se connecter</button>
+                    </form>
+
+                    <div class="auth-divider">
+                        <span>OU</span>
+                    </div>
+
+                    <div class="auth-social">
+                        <button class="btn-social">Google</button>
+                        <button class="btn-social">Facebook</button>
+                    </div>
+
+                    <div class="auth-footer">
+                        <p>Pas encore de compte ? <a href="inscription.html">Créer un compte</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-title">TERANGA SECURITY</h3>
+                    <p class="footer-description">
+                        Plateforme sénégalaise de formation et sensibilisation en cybersécurité.
+                    </p>
+                    <p class="footer-tagline">
+                        Former, Protéger, Renforcer la sécurité numérique au Sénégal.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Liens Rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="formations.html">Formations</a></li>
+                        <li><a href="a-propos.html">À propos</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Contact</h4>
+                    <ul class="footer-contact">
+                        <li>📧 <a href="mailto:contact@terangasecurity.com">contact@terangasecurity.com</a></li>
+                        <li>📱 <a href="tel:+221777777777">+221 77 777 77 77</a></li>
+                        <li>📍 Dakar, Sénégal</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Suivez-nous</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">Facebook</a>
+                        <a href="#" class="social-link" aria-label="Twitter">Twitter</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" class="social-link" aria-label="Instagram">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TERANGA SECURITY. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/validation.js"></script>
+    <script>
+        // Login form validation
+        const loginForm = document.getElementById('loginForm');
+        const loginRules = {
+            email: VALIDATION_RULES.email,
+            password: VALIDATION_RULES.password
+        };
+
+        // Initialize real-time validation
+        if (loginForm) {
+            initRealTimeValidation(loginForm, loginRules);
+
+            // Remember me functionality
+            const rememberMe = loginForm.querySelector('input[name="remember"]');
+            if (rememberMe) {
+                // Load saved email if exists
+                const savedEmail = localStorage.getItem('rememberedEmail');
+                if (savedEmail) {
+                    const emailField = loginForm.querySelector('input[type="email"]');
+                    if (emailField) {
+                        emailField.value = savedEmail;
+                        rememberMe.checked = true;
+                    }
+                }
+            }
+
+            // Form submission
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate form
+                if (validateForm(loginForm, loginRules)) {
+                    const email = loginForm.querySelector('input[type="email"]').value;
+                    const password = loginForm.querySelector('input[type="password"]').value;
+                    
+                    // Disable submit button
+                    const submitBtn = loginForm.querySelector('.btn-auth');
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Connexion...';
+
+                    // Simulate login (in real app, this would be an API call)
+                    setTimeout(() => {
+                        // Save login state
+                        localStorage.setItem('isLoggedIn', 'true');
+                        
+                        // Remember email if checkbox is checked
+                        if (rememberMe && rememberMe.checked) {
+                            localStorage.setItem('rememberedEmail', email);
+                        } else {
+                            localStorage.removeItem('rememberedEmail');
+                        }
+
+                        toast.success('Connexion réussie ! Bienvenue sur TERANGA SECURITY.');
+                        
+                        // Redirect after short delay
+                        setTimeout(() => {
+                            window.location.href = 'dashboard/dashboard.html';
+                        }, 1000);
+                    }, 1000);
+                } else {
+                    toast.error('Veuillez vérifier vos identifiants.');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

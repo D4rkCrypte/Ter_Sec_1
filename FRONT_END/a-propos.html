@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <title>À propos - TERANGA SECURITY</title>
+    <meta name="description" content="Découvrez TERANGA SECURITY, plateforme sénégalaise de formation et sensibilisation en cybersécurité.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="index.html">TERANGA SECURITY</a>
+                    </div>
+                    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Accueil</a></li>
+                        <li><a href="a-propos.html" class="nav-link active">À propos</a></li>
+                        <li><a href="formations.html" class="nav-link">Formations</a></li>
+                        <li><a href="articles.html" class="nav-link">Articles</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                        <li id="auth-menu-item">
+                            <a href="login.html" class="nav-link btn-login" id="login-btn">Se connecter</a>
+                            <div class="user-profile-menu" id="user-profile" style="display: none;">
+                                <button class="user-profile-btn" id="profile-toggle">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </button>
+                                <div class="profile-dropdown" id="profile-dropdown">
+                                    <a href="dashboard/dashboard.html" class="profile-link">Tableau de bord</a>
+                                    <a href="formations.html" class="profile-link">Mes formations</a>
+                                    <a href="#" class="profile-link" id="logout-btn">Déconnexion</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="index.html">Accueil</a></li>
+                <li aria-current="page">À propos</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>À propos de TERANGA SECURITY</h1>
+            <p>Former, Protéger, Renforcer la sécurité numérique au Sénégal</p>
+        </div>
+    </section>
+
+    <!-- Notre Mission -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2>Notre Mission</h2>
+                <p class="lead">
+                    TERANGA SECURITY est une plateforme sénégalaise dédiée à la formation et à la sensibilisation 
+                    en cybersécurité. Notre mission est de former et protéger les jeunes Sénégalais à l'ère du numérique, 
+                    en leur fournissant les compétences nécessaires pour évoluer dans un environnement digital sécurisé.
+                </p>
+            </div>
+
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="mission-icon">🎯</div>
+                    <h3>Formation en cybersécurité pour tous</h3>
+                    <p>
+                        Nous proposons des formations accessibles à tous, adaptées aux différents niveaux, 
+                        de débutant à expert. Nos programmes sont conçus pour répondre aux besoins spécifiques 
+                        du marché sénégalais.
+                    </p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">📢</div>
+                    <h3>Sensibilisation à la sécurité numérique</h3>
+                    <p>
+                        Nous organisons des campagnes de sensibilisation et des ateliers pratiques pour éduquer 
+                        les entreprises, institutions et particuliers aux bonnes pratiques de sécurité numérique.
+                    </p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">🤝</div>
+                    <h3>Accompagnement des PME et ONG</h3>
+                    <p>
+                        Nous accompagnons les PME et ONG sénégalaises dans leur transformation digitale sécurisée, 
+                        en leur fournissant conseils, solutions et formations personnalisées.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nos Piliers -->
+    <section class="piliers-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nos Piliers</h2>
+                <p class="section-subtitle">
+                    Trois axes stratégiques pour bâtir un Sénégal numérique sûr et résilient
+                </p>
+            </div>
+            <div class="piliers-grid">
+                <div class="pilier-card">
+                    <div class="pilier-icon">🎓</div>
+                    <h3>Formation</h3>
+                    <p>
+                        Des programmes de formation complets et certifiants en cybersécurité, 
+                        adaptés au contexte sénégalais et aux besoins du marché local.
+                    </p>
+                </div>
+                <div class="pilier-card">
+                    <div class="pilier-icon">🛡️</div>
+                    <h3>Sensibilisation</h3>
+                    <p>
+                        Campagnes de sensibilisation et ateliers pratiques pour éduquer les entreprises, 
+                        institutions et particuliers aux bonnes pratiques de sécurité.
+                    </p>
+                </div>
+                <div class="pilier-card">
+                    <div class="pilier-icon">🔒</div>
+                    <h3>Protection</h3>
+                    <p>
+                        Conseils et solutions pour protéger vos systèmes, données et infrastructures 
+                        contre les menaces cybernétiques actuelles.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pourquoi nous choisir -->
+    <section class="why-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Pourquoi nous choisir ?</h2>
+                <p class="section-subtitle">
+                    Des raisons concrètes de faire confiance à TERANGA SECURITY
+                </p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">🌍</div>
+                    <h4>Expertise Sénégalaise</h4>
+                    <p>Une équipe d'experts sénégalais qui comprend les défis spécifiques du pays</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">📚</div>
+                    <h4>Contenu Adapté</h4>
+                    <p>Formations et ressources conçues pour le contexte sénégalais</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🤝</div>
+                    <h4>Accompagnement</h4>
+                    <p>Suivi personnalisé tout au long de votre parcours de formation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Témoignages</h2>
+                <p class="section-subtitle">
+                    Ce que disent nos apprenants de leur expérience avec TERANGA SECURITY
+                </p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">AM</div>
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">
+                            "Grâce à TERANGA SECURITY, j'ai pu acquérir les compétences nécessaires 
+                            pour sécuriser l'infrastructure de mon entreprise. Les formateurs sont excellents !"
+                        </p>
+                        <div class="testimonial-author">
+                            <h4>Amadou Diallo</h4>
+                            <p>Responsable IT, Dakar</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">FA</div>
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">
+                            "Une plateforme exceptionnelle qui répond vraiment aux besoins de cybersécurité 
+                            au Sénégal. J'ai été impressionnée par la qualité des contenus."
+                        </p>
+                        <div class="testimonial-author">
+                            <h4>Fatou Sall</h4>
+                            <p>Analyste Cybersécurité, Abidjan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">KM</div>
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">
+                            "TERANGA SECURITY m'a permis de me reconvertir dans la cybersécurité. 
+                            Aujourd'hui, je travaille comme consultant en sécurité informatique."
+                        </p>
+                        <div class="testimonial-author">
+                            <h4>Kofi Mensah</h4>
+                            <p>Consultant Sécurité, Accra</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Communauté -->
+    <section class="community-section">
+        <div class="container">
+            <div class="community-content">
+                <h2 class="section-title">Communauté Sénégalaise</h2>
+                <p class="community-description">
+                    Rejoignez une communauté dynamique de professionnels et passionnés de cybersécurité 
+                    à travers tout le Sénégal. Ensemble, nous bâtissons un avenir numérique plus sûr pour le pays.
+                </p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">5000+</div>
+                        <div class="stat-label">Apprenants actifs</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">14</div>
+                        <div class="stat-label">Régions du Sénégal</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Formations disponibles</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-title">TERANGA SECURITY</h3>
+                    <p class="footer-description">
+                        Plateforme sénégalaise de formation et sensibilisation en cybersécurité.
+                    </p>
+                    <p class="footer-tagline">
+                        Former, Protéger, Renforcer la sécurité numérique au Sénégal.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Liens Rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="formations.html">Formations</a></li>
+                        <li><a href="a-propos.html">À propos</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Contact</h4>
+                    <ul class="footer-contact">
+                        <li>📧 <a href="mailto:contact@terangasecurity.com">contact@terangasecurity.com</a></li>
+                        <li>📱 <a href="tel:+221777777777">+221 77 777 77 77</a></li>
+                        <li>📍 Dakar, Sénégal</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-subtitle">Suivez-nous</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">Facebook</a>
+                        <a href="#" class="social-link" aria-label="Twitter">Twitter</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" class="social-link" aria-label="Instagram">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TERANGA SECURITY. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
